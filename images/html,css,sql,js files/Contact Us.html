@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>FootWearX - Contact Us</title>
+    <link rel="stylesheet" href="./styles.css">
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: url('bg.jpg') no-repeat center center;
+            background-size: cover;
+            filter: blur(5px);
+            z-index: -1;
+            animation: mymove 7s ease-in;
+        }
+
+        body {
+            background: #f8f9fa;
+            color: #333;
+            text-align: center;
+           
+        }
+
+        
+
+      
+
+        /* Contact Section (Flexbox Layout) */
+        .contact-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            max-width: 1000px;
+            margin: 50px auto;
+            padding: 20px;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        /* Left Side - Map */
+        .map-container {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            max-width: 450px;
+            height: 350px;
+            border: 2px solid #ff7e5f;
+            border-radius: 10px;
+        }
+
+        /* Right Side - Form */
+        .contact-form {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 450px;
+            backdrop-filter: blur(10px);
+            text-align: left;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        .contact-form h2 {
+            margin-bottom: 10px;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        input:focus, textarea:focus {
+            outline: 2px solid #ff7e5f;
+        }
+
+        .cta-button {
+            display: inline-block;
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, #ff7e5f, #feb47b);
+            color: white;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s ease-in-out;
+            border-radius: 5px;
+        }
+
+        .cta-button:hover {
+            background: linear-gradient(135deg, rgb(10,46,88) 18%, rgb(89, 255, 255));
+            
+            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .contact-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .map-container iframe,
+            .contact-form {
+                max-width: 100%;
+            }
+        }
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            padding: 10px;
+            margin-top: 40px;
+            font-size: 14px;
+        }
+
+        
+/* Search Icon */
+#search-icon {
+    cursor: pointer;
+}
+
+/* Fullscreen Search Overlay */
+.search-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Dark transparent background */
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #ffffff3b;
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 500px;
+}
+
+#search-bar {
+  
+    width: 100%;
+    padding: 10px;
+    font-size: 18px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+ 
+}
+
+button {
+    padding: 10px 20px;
+    background-color: rgb(10, 46, 88);
+    color: rgb(255, 255, 255);
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: rgb(89, 255, 255);
+    color: black;
+}
+
+/* Style for closing the search */
+button {
+    margin-top: 10px;
+}
+    </style>
+</head>
+<body>
+    
+    <div class="background"></div>
+    <header>
+        <nav>
+            <div class="logo"><strong style="background-color: rgb(10, 46, 88);">FootWear <strong style="background-color: rgb(89, 255, 255); color: rgb(10, 46, 88);">X</strong></strong></div>
+            <ul class="nav-links">
+                <li><a href="Home.html">Home</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="About Us.html">About Us</a></li>
+                <li><strong><a style="pointer-events: none; color: rgb(255, 255, 255); font-size: 20px;" href="Contact Us.html">Contact Us</a></strong></li>
+                <li><a href="Login.html">Login</a></li>
+                <li><a href="Sign Up.html">Sign Up</a></li>
+                <li> <a href="#"><i style="font-size: 30px;" class="fa fa-shopping-cart"></i></a></li>
+           <!-- Magnifying Glass for Search -->
+           <li><a href="#" id="search-icon" onclick="openSearch()"><i style="font-size: 30px;" class="fa fa-search"></i></a></li>
+        </ul>
+    </nav>
+
+    <button id="btnhide" onmouseover="changeText()" onmouseout="resetText()" onclick="toggleFeedbackSidebar() ,hide()" class="cta-button1" style="display: none; border: none; float: right; margin-top: 38px; margin-right: 20px;">How was our service?</button>
+
+    <!-- Fullscreen Search Bar (Hidden Initially) -->
+    <div id="search-overlay" class="search-overlay">
+        <div class="search-container">
+            <input style="border-radius: 20px;" type="text" id="search-bar" placeholder="Search for products..." />
+            <button onclick="closeSearch()">Close</button>
+        </div>
+    </div>
+</header>
+
+    <!-- Contact Section -->
+    <section class="contact-container">
+        <!-- Left Side: Google Map -->
+        <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31689.053796726515!2d79.83009007482377!3d6.8748168625047805!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae25b5add04905d%3A0x48ddac6b91c722df!2sNEXT%20LEVEL%20FOOTWEAR!5e0!3m2!1sen!2slk!4v1740125407146!5m2!1sen!2slk" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </iframe>
+        </div>
+
+        <!-- Right Side: Contact Form -->
+        <div class="contact-form">
+            <h2 style="color: white;">Get in Touch</h2>
+            <form>
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <textarea placeholder="Your Message" rows="5" required></textarea>
+                <button type="submit" class="cta-button">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+   <!-- Footer -->
+   <footer>
+    <div class="footer-content">
+        <div class="footer-section">
+            <h3>About FootWearX</h3>
+            <p>Discover high-quality footwear for all occasions. At FootWearX, we bring you the latest trends with comfort and durability.</p>
+        </div>
+        <div class="footer-section">
+            <h3>Customer Service</h3>
+            <ul>
+                <li><a href="./FAQs.html">FAQs</a></li>
+                <li><a href="./S&R.html">Shipping & Returns</a></li>
+                <li><a href="size-guide.html">Size Guide</a></li>
+                <li><a href="Contact Us.html">Contact Us</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h3>Follow Us</h3>
+            <a href="#">Facebook</a>
+            <a href="#">Instagram</a>
+            <a href="#">Twitter</a>
+        </div>
+        <div class="footer-section">
+            <h3>Contact Info</h3>
+            <p>Email: support@footwearx.com</p>
+            <p>Phone: +94 11 234 5678</p>
+            <p>Address: 123 Shoe Street, Colombo, Sri Lanka</p>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2025 FootWearX. All rights reserved.</p>
+    </div>
+</footer>
+<script>
+    // Function to open the search overlay and hide the page content
+function openSearch() {
+    // Hide the main content of the page (optional: you can modify the code to fade out other content if needed)
+    document.body.style.overflow = "hidden"; // Prevent scrolling when search is open
+    document.getElementById("search-overlay").style.display = "flex"; // Show the search overlay
+}
+
+// Function to close the search overlay and show the page content again
+function closeSearch() {
+    document.body.style.overflow = "auto"; // Allow scrolling again
+    document.getElementById("search-overlay").style.display = "none"; // Hide the search overlay
+}
+
+</script>
+</body>
+</html>

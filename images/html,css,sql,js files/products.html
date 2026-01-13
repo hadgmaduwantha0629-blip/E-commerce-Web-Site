@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>FootWearX - Products</title>
+    <link rel="stylesheet" href="./styles.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .filter-popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    z-index: 1000;
+    width: 350px;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+.filter-popup h3 {
+    margin-bottom: 20px;
+    font-size: 20px;
+    color: #333;
+}
+
+.filter-group {
+    margin-bottom: 20px;
+}
+
+.filter-group h4 {
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: #555;
+}
+
+.filter-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+    color: #333;
+}
+
+.filter-group input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+.price-range {
+    margin-top: 10px;
+}
+
+.price-range input[type="range"] {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.price-range p {
+    font-size: 14px;
+    color: #333;
+}
+
+.color-options .color-box {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border-radius: 3px;
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
+.color-options .black { background-color: #000; }
+.color-options .white { background-color: #fff; border: 1px solid #ccc; }
+.color-options .blue { background-color: #007bff; }
+.color-options .red { background-color: #dc3545; }
+.color-options .green { background-color: #28a745; }
+.color-options .gray { background-color: #6c757d; }
+
+.filter-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.filter-actions button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.apply-button {
+    background: #ff7e5f;
+    color: white;
+}
+
+        /* Header and Navigation */
+        header {
+            background: linear-gradient(135deg, rgb(10, 46, 88) 28%, rgb(89, 255, 255));
+            color: white;
+            padding: 10px 20px;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* Sub Navigation */
+        .sub-nav {
+            background: #f5f5f5;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 50px;
+        }
+
+        .filter-button {
+            background: #ff7e5f;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .filter-button:hover {
+            background: #ff9c11;
+        }
+
+        /* Filter Popup */
+        .filter-popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            z-index: 1000;
+            width: 300px;
+        }
+
+        .filter-popup h3 {
+            margin-bottom: 20px;
+        }
+
+        .filter-group {
+            margin-bottom: 20px;
+        }
+
+        .filter-group label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .filter-group input[type="checkbox"] {
+            margin-right: 10px;
+        }
+
+        .close-button {
+            background: #ff7e5f;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        .close-button:hover {
+            background: #fa8509;
+        }
+
+        /* Main content */
+        .main-content {
+            padding: 20px;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .product-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .product-card:hover {
+            transform: scale(1.05);
+            background: linear-gradient(135deg, rgb(148, 159, 171) 18%, rgb(224, 231, 231));
+            
+            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 200px;
+            border-radius: 10px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #ff7e5f;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+        .cta-button:hover {
+            background: linear-gradient(135deg, rgb(10,46,88) 18%, rgb(89, 255, 255));
+            
+            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+            
+        }
+        .cta-button-cart {
+            display: inline-block;
+            background: #ff7e5f;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+        .cta-button-cart:hover {
+            background: linear-gradient(135deg, rgb(255, 43, 1) 18%, rgb(229, 179, 1));
+            
+            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+            
+        }
+
+        .hide{
+            display: none;
+        }
+        
+/* Search Icon */
+#search-icon {
+    cursor: pointer;
+}
+
+/* Fullscreen Search Overlay */
+.search-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Dark transparent background */
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #ffffff3b;
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 500px;
+}
+
+#search-bar {
+  
+    width: 100%;
+    padding: 10px;
+    font-size: 18px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+ 
+}
+
+button {
+    padding: 10px 20px;
+    background-color: rgb(10, 46, 88);
+    color: rgb(255, 255, 255);
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: rgb(89, 255, 255);
+    color: black;
+}
+
+/* Style for closing the search */
+button {
+    margin-top: 10px;
+}
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <div class="logo"><strong style="background-color: rgb(10, 46, 88);">FootWear <strong style="background-color: rgb(89, 255, 255); color: rgb(10, 46, 88);">X</strong></strong></div>
+            <ul class="nav-links">
+                <li><a href="Home.html">Home</a></li>
+                <li><strong><a style="pointer-events: none; color: rgb(255, 255, 255); font-size: 20px;" href="products.html">Products</a></strong></li>
+                <li><a href="About Us.html">About Us</a></li>
+                <li><a href="Contact Us.html">Contact Us</a></li>
+                <li><a href="Login.html">Login</a></li>
+                <li><a href="Sign Up.html">Sign Up</a></li>
+                <li> <a href="#"><i style="font-size: 30px;" class="fa fa-shopping-cart"></i></a></li>
+            <!-- Magnifying Glass for Search -->
+            <li><a href="#" id="search-icon" onclick="openSearch()"><i style="font-size: 30px;" class="fa fa-search"></i></a></li>
+        </ul>
+    </nav>
+
+    <button id="btnhide" onmouseover="changeText()" onmouseout="resetText()" onclick="toggleFeedbackSidebar() ,hide()" class="cta-button1" style="display: none; border: none; float: right; margin-top: 38px; margin-right: 20px;">How was our service?</button>
+
+    <!-- Fullscreen Search Bar (Hidden Initially) -->
+    <div id="search-overlay" class="search-overlay">
+        <div class="search-container">
+            <input style="border-radius: 20px;" type="text" id="search-bar" placeholder="Search for products..." />
+            <button onclick="closeSearch()">Close</button>
+        </div>
+    </div>
+</header>
+
+    <!-- Sub Navigation -->
+    <div class="sub-nav">
+        <button class="filter-button" onclick="openFilterPopup()">Filter</button>
+    </div>
+
+    <div class="filter-popup" id="filterPopup">
+        <h3>Filter Products</h3>
+        <button class="close-button" onclick="closeFilterPopup()">&times;</button>
+    
+        <!-- Category Filter -->
+        <div class="filter-group">
+            <h4>Category</h4>
+            <label><input type="checkbox" name="category" value="sneakers"> Sneakers</label>
+            <label><input type="checkbox" name="category" value="loafers"> Loafers</label>
+            <label><input type="checkbox" name="category" value="running"> Running Shoes</label>
+            <label><input type="checkbox" name="category" value="sandals"> Sandals</label>
+            <label><input type="checkbox" name="category" value="boots"> Boots</label>
+            <label><input type="checkbox" name="category" value="flip-flops"> Flip-Flops</label>
+        </div>
+    
+        <!-- Price Range Slider -->
+        <div class="filter-group">
+            <h4>Price Range</h4>
+            <div class="price-range">
+                <input type="range" id="minPrice" name="minPrice" min="0" max="500" value="0">
+                <input type="range" id="maxPrice" name="maxPrice" min="0" max="500" value="500">
+                <p>Price: $<span id="minPriceValue">0</span> - $<span id="maxPriceValue">500</span></p>
+            </div>
+        </div>
+    
+        <!-- Size Range -->
+        <div class="filter-group">
+            <h4>Size</h4>
+            <div class="size-range">
+                <label><input type="checkbox" name="size" value="6"> Size 6</label>
+                <label><input type="checkbox" name="size" value="7"> Size 7</label>
+                <label><input type="checkbox" name="size" value="8"> Size 8</label>
+                <label><input type="checkbox" name="size" value="9"> Size 9</label>
+                <label><input type="checkbox" name="size" value="10"> Size 10</label>
+                <label><input type="checkbox" name="size" value="11"> Size 11</label>
+            </div>
+        </div>
+    
+        <!-- Color Filter -->
+        <div class="filter-group">
+            <h4>Color</h4>
+            <div class="color-options">
+                <label><input type="checkbox" name="color" value="black"> <span class="color-box black"></span> Black</label>
+                <label><input type="checkbox" name="color" value="white"> <span class="color-box white"></span> White</label>
+                <label><input type="checkbox" name="color" value="blue"> <span class="color-box blue"></span> Blue</label>
+                <label><input type="checkbox" name="color" value="red"> <span class="color-box red"></span> Red</label>
+                <label><input type="checkbox" name="color" value="green"> <span class="color-box green"></span> Green</label>
+                <label><input type="checkbox" name="color" value="gray"> <span class="color-box gray"></span> Gray</label>
+            </div>
+        </div>
+    
+        <!-- Brand Filter -->
+        <div class="filter-group">
+            <h4>Brand</h4>
+            <label><input type="checkbox" name="brand" value="nike"> Nike</label>
+            <label><input type="checkbox" name="brand" value="adidas"> Adidas</label>
+            <label><input type="checkbox" name="brand" value="puma"> Puma</label>
+            <label><input type="checkbox" name="brand" value="reebok"> Reebok</label>
+            <label><input type="checkbox" name="brand" value="vans"> Vans</label>
+            <label><input type="checkbox" name="brand" value="converse"> Converse</label>
+        </div>
+    
+        <!-- Sorting Options -->
+        <div class="filter-group">
+            <h4>Sort By</h4>
+            <select id="sortBy">
+                <option value="price-low-to-high">Price: Low to High</option>
+                <option value="price-high-to-low">Price: High to Low</option>
+                <option value="popularity">Popularity</option>
+                <option value="newest">Newest Arrivals</option>
+                <option value="rating">Customer Rating</option>
+            </select>
+        </div>
+    
+        <!-- Apply and Reset Buttons -->
+        <div class="filter-actions">
+            <button class="apply-button" onclick="applyFilters()">Apply Filters</button>
+            <button class="reset-button" onclick="resetFilters()">Reset Filters</button>
+        </div>
+    </div>
+
+    <!-- Main content -->
+    <main class="main-content">
+        <h1>Our Products</h1>
+        <div class="product-grid">
+            <!-- Product Cards -->
+    
+            <div class="product-card">
+                <img src="product1.png" alt="Nike Air Max Dn8" class="product-image">
+                <h3>Nike Air Max Dn8</h3><br>
+                <p>Comfortable and stylish with air-cushion support.</p><br>
+                <p><strong>Price:</strong> $190.99</p><br>
+                <p class="hide"><strong>Heel Height:</strong> 1.5 inches</p>
+                <p class="hide"><strong>SKU:</strong> NIK-AMD8-001</p>
+                <p class="hide"><strong>Categories:</strong> Running Shoes, Sneakers, Men’s Footwear</p>
+                <p class="hide"><strong>Description:</strong> Experience unparalleled comfort and movement with the Nike Air Max Dn8, featuring responsive cushioning and a sleek design.</p>
+                
+                <h4 class="hide">Reviews:</h4>
+                <ul class="hide">
+                    <li><strong>John D.:</strong> "Super comfortable and stylish! Worth the price." ⭐⭐⭐⭐⭐</li>
+                    <li><strong>Emma R.:</strong> "Perfect for running, great support!" ⭐⭐⭐⭐⭐</li>
+                    <li><strong>Mike B.:</strong> "Love the design, but the size runs a bit small." ⭐⭐⭐⭐</li>
+                    <li><strong>Sarah K.:</strong> "Very durable and lightweight, I wear them daily." ⭐⭐⭐⭐⭐</li>
+                    <li><strong>James L.:</strong> "Good quality, but took a while to break in." ⭐⭐⭐⭐</li>
+                </ul>
+            
+                <a href="product-details.html?name=Nike%20Air%20Max%20Dn8&price=190.99&image=product1.png&healheight=1.5%20inches&SKU=NIK-AMD8-001&categories=Running%20Shoes,Sneakers,Men's%20Footwear&description=Experience%20unparalleled%20comfort%20and%20movement%20with%20the%20Nike%20Air%20Max%20Dn8,%20featuring%20responsive%20cushioning%20and%20a%20sleek%20design.&reviews=Super%20comfortable%20and%20stylish!%20Worth%20the%20price.%20⭐⭐⭐⭐⭐|Perfect%20for%20running,%20great%20support!%20⭐⭐⭐⭐⭐|Love%20the%20design,%20but%20the%20size%20runs%20a%20bit%20small.%20⭐⭐⭐⭐|Very%20durable%20and%20lightweight,%20I%20wear%20them%20daily.%20⭐⭐⭐⭐⭐|Good%20quality,%20but%20took%20a%20while%20to%20break%20in.%20⭐⭐⭐⭐" class="cta-button">
+                    Buy Now
+                </a>
+                <a href="#" class="cta-button-cart">Add Cart</a>
+            </div>
+
+            <div class="product-card">
+                <img src="product2.png" alt="Nike C1TY" class="product-image">
+                <h3>Nike C1TY</h3><br>
+                <p>Breathable mesh for a lightweight, cushioned fit.</p><br>
+                <p><strong>Price:</strong> $100.00</p><br>
+                <p class="hide"><strong>Heel Height:</strong> 1.2 inches</p>
+                <p class="hide"><strong>SKU:</strong> NIK-C1TY-002</p>
+                <p class="hide"><strong>Categories:</strong> Running Shoes, Casual Wear, Men’s Footwear</p>
+                <p class="hide"><strong>Description:</strong> A mesh upper keeps the fit breathable, making this an excellent choice for everyday wear and running.</p>
+            
+                <h4 class="hide">Reviews:</h4>
+                <ul class="hide">
+                    <li><strong>Alice T.:</strong> "Very comfortable and stylish." ⭐⭐⭐⭐⭐</li>
+                    <li><strong>Robert M.:</strong> "Breathability is great, but sizing runs a bit tight." ⭐⭐⭐⭐</li>
+                    <li><strong>Linda J.:</strong> "Perfect for casual wear, love it!" ⭐⭐⭐⭐⭐</li>
+                    <li><strong>Steve P.:</strong> "Could use more cushioning, but overall great value." ⭐⭐⭐⭐</li>
+                    <li><strong>Susan W.:</strong> "Lightweight and flexible, good for jogging." ⭐⭐⭐⭐⭐</li>
+                </ul>
+            
+                <a href="product-details.html?name=Nike%20C1TY&price=100.00&image=product2.png&healheight=1.2%20inches&SKU=NIK-C1TY-002&categories=Running%20Shoes,Casual%20Wear,Men's%20Footwear&description=A%20mesh%20upper%20keeps%20the%20fit%20breathable,%20making%20this%20an%20excellent%20choice%20for%20everyday%20wear%20and%20running.&reviews=Very%20comfortable%20and%20stylish.%20⭐⭐⭐⭐⭐|Breathability%20is%20great,%20but%20sizing%20runs%20a%20bit%20tight.%20⭐⭐⭐⭐|Perfect%20for%20casual%20wear,%20love%20it!%20⭐⭐⭐⭐⭐|Could%20use%20more%20cushioning,%20but%20overall%20great%20value.%20⭐⭐⭐⭐|Lightweight%20and%20flexible,%20good%20for%20jogging.%20⭐⭐⭐⭐⭐" class="cta-button">
+                    Buy Now
+                </a>
+                <a href="#" class="cta-button-cart">Add Cart</a>
+            </div>
+            
+            <div class="product-card">
+                <img src="product3.avif" alt="Eezay Flip-Flops" class="product-image">
+                <h3>Eezay Flip-Flops</h3><br>
+                <p>Flexible and comfy for everyday wear.</p><br>
+                <p><strong>Price:</strong> $50.59</p><br>
+                <p class="hide"><strong>Heel Height:</strong> 0.5 inches</p>
+                <p class="hide"><strong>SKU:</strong> PUMA-EEZAY-003</p>
+                <p class="hide"><strong>Categories:</strong> Flip-Flops, Casual, Beach Wear</p>
+                <p class="hide"><strong>Description:</strong> Lightweight and durable flip-flops designed for everyday comfort and casual outings.</p>
+            
+                <h4 class="hide">Reviews:</h4>
+                <ul class="hide">
+                    <li><strong>Michael R.:</strong> "Super comfy and perfect for the beach!" ⭐⭐⭐⭐⭐</li>
+                    <li><strong>Emma L.:</strong> "Very lightweight, but could use more arch support." ⭐⭐⭐⭐</li>
+                    <li><strong>Daniel P.:</strong> "Affordable and durable, love it!" ⭐⭐⭐⭐⭐</li>
+                    <li><strong>Sophia K.:</strong> "Simple design but high quality." ⭐⭐⭐⭐</li>
+                    <li><strong>Jason N.:</strong> "Great for summer, easy to slip on and off." ⭐⭐⭐⭐⭐</li>
+                </ul>
+            
+                <a href="product-details.html?name=Eezay%20Flip-Flops&price=50.59&image=product3.avif&healheight=0.5%20inches&SKU=PUMA-EEZAY-003&categories=Flip-Flops,Casual,Beach%20Wear&description=Lightweight%20and%20durable%20flip-flops%20designed%20for%20everyday%20comfort%20and%20casual%20outings.&reviews=Super%20comfy%20and%20perfect%20for%20the%20beach!%20⭐⭐⭐⭐⭐|Very%20lightweight,%20but%20could%20use%20more%20arch%20support.%20⭐⭐⭐⭐|Affordable%20and%20durable,%20love%20it!%20⭐⭐⭐⭐⭐|Simple%20design%20but%20high%20quality.%20⭐⭐⭐⭐|Great%20for%20summer,%20easy%20to%20slip%20on%20and%20off.%20⭐⭐⭐⭐⭐" class="cta-button">Buy Now</a>
+                <a href="#" class="cta-button-cart">Add Cart</a>
+            </div>
+            
+            <div class="product-card">
+                <img src="product4.avif" alt="Speedcat OG" class="product-image">
+                <h3>Speedcat OG</h3><br>
+                <p>Premium style for formal occasions.</p><br>
+                <p><strong>Price:</strong> $271.12</p><br>
+                <p class="hide"><strong>Heel Height:</strong> 1.8 inches</p>
+                <p class="hide"><strong>SKU:</strong> SPD-OG-004</p>
+                <p class="hide"><strong>Categories:</strong> Formal, Luxury, Office Wear</p>
+                <p class="hide"><strong>Description:</strong> Designed for formal occasions and office wear, the Speedcat OG offers premium style and durability.</p>
+            
+                <h4 class="hide">Reviews:</h4>
+                <ul class="hide">
+                    <li><strong>David S.:</strong> "Very elegant and comfortable!" ⭐⭐⭐⭐⭐</li>
+                    <li><strong>Jessica B.:</strong> "Looks professional, but takes time to break in." ⭐⭐⭐⭐</li>
+                    <li><strong>Tom H.:</strong> "Excellent quality, worth the price." ⭐⭐⭐⭐⭐</li>
+                    <li><strong>Rachel F.:</strong> "Fits perfectly with my suits, love it." ⭐⭐⭐⭐⭐</li>
+                    <li><strong>Andrew M.:</strong> "Very classy and stylish, but needs polishing often." ⭐⭐⭐⭐</li>
+                </ul>
+            
+                <a href="product-details.html?name=Speedcat%20OG&price=271.12&image=product4.avif&healheight=1.8%20inches&SKU=SPD-OG-004&categories=Formal,Luxury,Office%20Wear&description=Designed%20for%20formal%20occasions%20and%20office%20wear,%20the%20Speedcat%20OG%20offers%20premium%20style%20and%20durability.&reviews=David%20S.%3A%20Very%20elegant%20and%20comfortable!%20⭐⭐⭐⭐⭐%7CJessica%20B.%3A%20Looks%20professional,%20but%20takes%20time%20to%20break%20in.%20⭐⭐⭐⭐%7CTom%20H.%3A%20Excellent%20quality,%20worth%20the%20price.%20⭐⭐⭐⭐⭐%7CRachel%20F.%3A%20Fits%20perfectly%20with%20my%20suits,%20love%20it.%20⭐⭐⭐⭐⭐%7CAndrew%20M.%3A%20Very%20classy%20and%20stylish,%20but%20needs%20polishing%20often.%20⭐⭐⭐⭐" class="cta-button">Buy Now</a>
+
+                <a href="#" class="cta-button-cart">Add Cart</a>
+            </div>
+            <div class="product-card">
+                <img src="product5.webp" alt="floatZig X1 Shoes" class="product-image">
+                <h3>floatZig X1 Shoes</h3><br>
+                <p>Lightweight, high-performance running shoes.</p><br>
+                <p><strong>Price:</strong> $199.99</p><br>
+                <p class="hide"><strong>Heel Height:</strong> 1.7 inches</p>
+                <p class="hide"><strong>SKU:</strong> FLT-ZIGX1-005</p>
+                <p class="hide"><strong>Categories:</strong> Running Shoes, Performance, Lightweight</p>
+                <p class="hide"><strong>Description:</strong> Lightweight running shoes designed for fast training and high performance.</p>
+            
+                <h4 class="hide">Reviews:</h4>
+                <ul class="hide">
+                    <li><strong>Kevin P.:</strong> "Amazing for fast runs, very responsive!" ⭐⭐⭐⭐⭐</li>
+                    <li><strong>Sandra L.:</strong> "Super light, almost feels like walking on air." ⭐⭐⭐⭐⭐</li>
+                    <li><strong>Chris D.:</strong> "Great grip, but could use more arch support." ⭐⭐⭐⭐</li>
+                    <li><strong>Nina W.:</strong> "Perfect for long-distance running." ⭐⭐⭐⭐⭐</li>
+                    <li><strong>Tom J.:</strong> "Really comfortable, but expensive." ⭐⭐⭐⭐</li>
+                </ul>
+            
+                <a href="product-details.html?name=floatZig%20X1%20Shoes&price=199.99&image=product5.webp&healheight=1.7%20inches&SKU=FLT-ZIGX1-005&categories=Running%20Shoes,Performance,Lightweight&description=Lightweight%20running%20shoes%20designed%20for%20fast%20training%20and%20high%20performance.&reviews=Kevin%20P.%3A%20Amazing%20for%20fast%20runs%2C%20very%20responsive!%20⭐⭐⭐%7CSandra%20L.%3A%20Super%20light%2C%20almost%20feels%20like%20walking%20on%20air.%20⭐%7CChris%20D.%3A%20Great%20grip%2C%20but%20could%20use%20more%20arch%20support.%20⭐⭐⭐⭐%7CNina%20W.%3A%20Perfect%20for%20long-distance%20running.%20⭐⭐⭐⭐⭐%7CTom%20J.%3A%20Really%20comfortable%2C%20but%20expensive.%20⭐⭐⭐⭐" class="cta-button">Buy Now</a>
+
+                <a href="#" class="cta-button-cart">Add Cart</a>
+            </div>
+            <div class="product-card">
+                <img src="./product6.avif" alt="Adidas Ultraboost" class="product-image">
+                <h3>Adidas Ultraboost</h3><br>
+                <p>Boost your energy with these super-responsive running shoes.</p><br>
+                <p><strong>Price:</strong> $179.99</p><br>
+                <p class="hide"><strong>Heel Height:</strong> 1.8 inches</p>
+                <p class="hide"><strong>SKU:</strong> ADI-ULB-001</p>
+                <p class="hide"><strong>Categories:</strong> Running Shoes, Sneakers</p>
+                <p class="hide"><strong>Description:</strong> Adidas Ultraboost delivers premium cushioning for long-lasting comfort.</p>
+                <h4 class="hide">Reviews:</h4>
+                <ul class="hide">
+                    <li><strong>Anna M.:</strong> "Great support, feels amazing on my feet!" ⭐⭐⭐⭐⭐</li>
+                    <li><strong>Chris W.:</strong> "Perfect for running, I feel more energized." ⭐⭐⭐⭐⭐</li>
+                    <li><strong>Mike F.:</strong> "Great fit, though a bit expensive." ⭐⭐⭐⭐</li>
+                </ul>
+                <a href="product-details.html?name=Adidas%20Ultraboost&price=179.99&image=product6.avif&healheight=1.8%20inches&SKU=ADI-ULB-001&categories=Running%20Shoes,Sneakers&description=Adidas%20Ultraboost%20delivers%20premium%20cushioning%20for%20long-lasting%20comfort.&reviews=Great%20support,%20feels%20amazing%20on%20my%20feet!%20⭐⭐⭐⭐⭐|Perfect%20for%20running,%20I%20feel%20more%20energized.%20⭐⭐⭐⭐⭐|Great%20fit,%20though%20a%20bit%20expensive.%20⭐⭐⭐⭐" class="cta-button">Buy Now</a>
+                <a href="#" class="cta-button-cart">Add Cart</a>
+            </div>
+            
+            <div class="product-card">
+                <img src="./product7.webp" alt="Nike Air Zoom Pegasus 38" class="product-image">
+                <h3>Nike Air Zoom Pegasus 38</h3><br>
+                <p>Experience high-speed comfort with responsive cushioning.</p><br>
+                <p><strong>Price:</strong> $129.99</p><br>
+                <p class="hide"><strong>Heel Height:</strong> 1.2 inches</p>
+                <p class="hide"><strong>SKU:</strong> NIK-AZP-038</p>
+                <p class="hide"><strong>Categories:</strong> Running Shoes, Sports</p>
+                <p class="hide"><strong>Description:</strong> Featuring breathable mesh and Zoom Air cushioning for explosive energy return.</p>
+                <h4 class="hide">Reviews:</h4>
+                <ul class="hide">
+                    <li><strong>Lucas P.:</strong> "Best shoes for running, super light!" ⭐⭐⭐⭐⭐</li>
+                    <li><strong>Ella V.:</strong> "Perfect fit and breathability." ⭐⭐⭐⭐⭐</li>
+                    <li><strong>Ryan J.:</strong> "Comfortable but could have more arch support." ⭐⭐⭐⭐</li>
+                </ul>
+                <a href="product-details.html?name=Nike%20Air%20Zoom%20Pegasus%2038&price=129.99&image=product7.webp&healheight=1.2%20inches&SKU=NIK-AZP-038&categories=Running%20Shoes,Sports&description=Featuring%20breathable%20mesh%20and%20Zoom%20Air%20cushioning%20for%20explosive%20energy%20return.&reviews=Best%20shoes%20for%20running,%20super%20light!%20⭐⭐⭐⭐⭐|Perfect%20fit%20and%20breathability.%20⭐⭐⭐⭐⭐|Comfortable%20but%20could%20have%20more%20arch%20support.%20⭐⭐⭐⭐" class="cta-button">Buy Now</a>
+                <a href="#" class="cta-button-cart">Add Cart</a>
+            </div>
+            
+            <div class="product-card">
+                <img src="./product8.avif" alt="Puma Speedcat" class="product-image">
+                <h3>Puma Speedcat</h3><br>
+                <p>Stylish and durable, built for high-speed performance.</p><br>
+                <p><strong>Price:</strong> $149.99</p><br>
+                <p class="hide"><strong>Heel Height:</strong> 1.4 inches</p>
+                <p class="hide"><strong>SKU:</strong> PUM-SPC-100</p>
+                <p class="hide"><strong>Categories:</strong> Sports, Sneakers</p>
+                <p class="hide"><strong>Description:</strong> Puma Speedcat offers high-speed comfort with precision grip and style.</p>
+                <h4 class="hide">Reviews:</h4>
+                <ul class="hide">
+                    <li><strong>Mark S.:</strong> "Great for sports, love the grip!" ⭐⭐⭐⭐⭐</li>
+                    <li><strong>Olivia T.:</strong> "Comfortable and fits like a glove." ⭐⭐⭐⭐⭐</li>
+                    <li><strong>George F.:</strong> "Nice shoe, but I wish the sole was thicker." ⭐⭐⭐⭐</li>
+                </ul>
+                <a href="product-details.html?name=Puma%20Speedcat&price=149.99&image=product8.avif&healheight=1.4%20inches&SKU=PUM-SPC-100&categories=Sports,Sneakers&description=Puma%20Speedcat%20offers%20high-speed%20comfort%20with%20precision%20grip%20and%20style.&reviews=Great%20for%20sports,%20love%20the%20grip!%20⭐⭐⭐⭐⭐|Comfortable%20and%20fits%20like%20a%20glove.%20⭐⭐⭐⭐⭐|Nice%20shoe,%20but%20I%20wish%20the%20sole%20was%20thicker.%20⭐⭐⭐⭐" class="cta-button">Buy Now</a>
+                <a href="#" class="cta-button-cart">Add Cart</a>
+            </div>
+            
+            <div class="product-card">
+                <img src="product9.jpeg" alt="Reebok Classic Leather" class="product-image">
+                <h3>Reebok Classic Leather</h3><br>
+                <p>Classic design with modern comfort, perfect for daily wear.</p><br>
+                <p><strong>Price:</strong> $109.99</p><br>
+                <p class="hide"><strong>Heel Height:</strong> 1.1 inches</p>
+                <p class="hide"><strong>SKU:</strong> REE-CLL-002</p>
+                <p class="hide"><strong>Categories:</strong> Casual Shoes, Sneakers</p>
+                <p class="hide"><strong>Description:</strong> Reebok Classic Leather offers timeless design with a focus on comfort and durability.</p>
+                <h4 class="hide">Reviews:</h4>
+                <ul class="hide">
+                    <li><strong>Jessica R.:</strong> "Comfortable for everyday wear." ⭐⭐⭐⭐⭐</li>
+                    <li><strong>Chris M.:</strong> "Classic look, but could be more breathable." ⭐⭐⭐⭐</li>
+                    <li><strong>Daniel P.:</strong> "Great price for the quality." ⭐⭐⭐⭐⭐</li>
+                </ul>
+                <a href="product-details.html?name=Reebok%20Classic%20Leather&price=109.99&image=product9.jpeg&healheight=1.1%20inches&SKU=REE-CLL-002&categories=Casual%20Shoes,Sneakers&description=Reebok%20Classic%20Leather%20offers%20timeless%20design%20with%20a%20focus%20on%20comfort%20and%20durability.&reviews=Comfortable%20for%20everyday%20wear.%20⭐⭐⭐⭐⭐|Classic%20look,%20but%20could%20be%20more%20breathable.%20⭐⭐⭐⭐|Great%20price%20for%20the%20quality.%20⭐⭐⭐⭐⭐" class="cta-button">Buy Now</a>
+                <a href="#" class="cta-button-cart">Add Cart</a>
+            </div>
+            
+            <div class="product-card">
+                <img src="./product10.webp" alt="New Balance Fresh Foam" class="product-image">
+                <h3>New Balance Fresh Foam</h3><br>
+                <p>Innovative cushioning technology for maximum comfort and support.</p><br>
+                <p><strong>Price:</strong> $139.99</p><br>
+                <p class="hide"><strong>Heel Height:</strong> 1.6 inches</p>
+                <p class="hide"><strong>SKU:</strong> NB-FRM-010</p>
+                <p class="hide"><strong>Categories:</strong> Running Shoes, Sports</p>
+                <p class="hide"><strong>Description:</strong> New Balance Fresh Foam combines responsive foam and a cushioned feel for every stride.</p>
+                <h4 class="hide">Reviews:</h4>
+                <ul class="hide">
+                    <li><strong>Emily G.:</strong> "Fantastic comfort, perfect for long runs." ⭐⭐⭐⭐⭐</li>
+                    <li><strong>Oliver W.:</strong> "Great for walking and running, very supportive." ⭐⭐⭐⭐⭐</li>
+                    <li><strong>Ava K.:</strong> "Good shoe, but I wish it was a bit lighter." ⭐⭐⭐⭐</li>
+                </ul>
+                <a href="product-details.html?name=New%20Balance%20Fresh%20Foam&price=139.99&image=product10.webp&healheight=1.6%20inches&SKU=NB-FRM-010&categories=Running%20Shoes,Sports&description=New%20Balance%20Fresh%20Foam%20combines%20responsive%20foam%20and%20a%20cushioned%20feel%20for%20every%20stride.&reviews=Fantastic%20comfort,%20perfect%20for%20long%20runs.%20⭐⭐⭐⭐⭐|Great%20for%20walking%20and%20running,%20very%20supportive.%20⭐⭐⭐⭐⭐|Good%20shoe,%20but%20I%20wish%20it%20was%20a%20bit%20lighter.%20⭐⭐⭐⭐" class="cta-button">Buy Now</a>
+                <a href="#" class="cta-button-cart">Add Cart</a>
+            </div>
+            <div class="product-card">
+                <img src="product11.jpg" alt="Asics Gel-Kayano 27" class="product-image">
+                <h3>Asics Gel-Kayano 27</h3><br>
+                <p>Stability and cushioning for long-distance runners.</p><br>
+                <p><strong>Price:</strong> $160.00</p><br>
+                <p class="hide"><strong>Heel Height:</strong> 1.3 inches</p>
+                <p class="hide"><strong>SKU:</strong> ASC-GK27-003</p>
+                <p class="hide"><strong>Categories:</strong> Running Shoes, Sports</p>
+                <p class="hide"><strong>Description:</strong> The Gel-Kayano 27 provides superior stability and cushioning for every stride.</p>
+                <h4 class="hide">Reviews:</h4>
+                <ul class="hide">
+                    <li><strong>Tom H.:</strong> "Excellent support and comfort!" ⭐⭐⭐⭐⭐</li>
+                    <li><strong>Jill S.:</strong> "Perfect for long-distance runs, love them!" ⭐⭐⭐⭐⭐</li>
+                    <li><strong>Ben R.:</strong> "Great cushion but a bit heavy for my taste." ⭐⭐⭐⭐</li>
+                </ul>
+                <a href="product-details.html?name=Asics%20Gel-Kayano%2027&price=160.00&image=product11.jpg&healheight=1.3%20inches&SKU=ASC-GK27-003&categories=Running%20Shoes,Sports&description=The%20Gel-Kayano%2027%20provides%20superior%20stability%20and%20cushioning%20for%20every%20stride.&reviews=Excellent%20support%20and%20comfort!%20⭐⭐⭐⭐⭐|Perfect%20for%20long-distance%20runs,%20love%20them!%20⭐⭐⭐⭐⭐|Great%20cushion%20but%20a%20bit%20heavy%20for%20my%20taste.%20⭐⭐⭐⭐" class="cta-button">Buy Now</a>
+                <a href="#" class="cta-button-cart">Add Cart</a>
+            </div>
+            
+            <div class="product-card">
+                <img src="product12.jpg" alt="Under Armour HOVR Phantom" class="product-image">
+                <h3>Under Armour HOVR Phantom</h3><br>
+                <p>Feel the energy return with each step in these stylish shoes.</p><br>
+                <p><strong>Price:</strong> $140.00</p><br>
+                <p class="hide"><strong>Heel Height:</strong> 1.0 inches</p>
+                <p class="hide"><strong>SKU:</strong> UA-HVPH-001</p>
+                <p class="hide"><strong>Categories:</strong> Running Shoes, Sports</p>
+                <p class="hide"><strong>Description:</strong> These shoes feature HOVR technology for unmatched cushioning and energy return.</p>
+                <h4 class="hide">Reviews:</h4>
+                <ul class="hide">
+                    <li><strong>Andrew L.:</strong> "Super comfortable, my feet feel fresh all day." ⭐⭐⭐⭐⭐</li>
+                    <li><strong>Rachel G.:</strong> "Great bounce-back, perfect for training." ⭐⭐⭐⭐⭐</li>
+                    <li><strong>Sam D.:</strong> "A bit too tight around the toes, but great overall." ⭐⭐⭐⭐</li>
+                </ul>
+                <a href="product-details.html?name=Under%20Armour%20HOVR%20Phantom&price=140.00&image=product12.jpg0&healheight=1.0%20inches&SKU=UA-HVPH-001&categories=Running%20Shoes,Sports&description=These%20shoes%20feature%20HOVR%20technology%20for%20unmatched%20cushioning%20and%20energy%20return.&reviews=Super%20comfortable,%20my%20feet%20feel%20fresh%20all%20day.%20⭐⭐⭐⭐⭐|Great%20bounce-back,%20perfect%20for%20training.%20⭐⭐⭐⭐⭐|A%20bit%20too%20tight%20around%20the%20toes,%20but%20great%20overall.%20⭐⭐⭐⭐" class="cta-button">Buy Now</a>
+                <a href="#" class="cta-button-cart">Add Cart</a>
+            </div>
+            
+            <div class="product-card">
+                <img src="product13.jpg" alt="Saucony Triumph 18" class="product-image">
+                <h3>Saucony Triumph 18</h3><br>
+                <p>Maximal cushioning for ultimate comfort during your runs.</p><br>
+                <p><strong>Price:</strong> $150.00</p><br>
+                <p class="hide"><strong>Heel Height:</strong> 1.2 inches</p>
+                <p class="hide"><strong>SKU:</strong> SAU-TRM18-005</p>
+                <p class="hide"><strong>Categories:</strong> Running Shoes, Sports</p>
+                <p class="hide"><strong>Description:</strong> The Triumph 18 provides a smooth, plush ride thanks to its ample cushioning.</p>
+                <h4 class="hide">Reviews:</h4>
+                <ul class="hide">
+                    <li><strong>Michael T.:</strong> "These shoes are incredibly cushioned, perfect for long runs." ⭐⭐⭐⭐⭐</li>
+                    <li><strong>Sarah H.:</strong> "Great for recovery runs, feels like walking on clouds!" ⭐⭐⭐⭐⭐</li>
+                    <li><strong>Tom K.:</strong> "Too much cushioning for my liking, but great for others." ⭐⭐⭐⭐</li>
+                </ul>
+                <a href="product-details.html?name=Saucony%20Triumph%2018&price=150.00&image=product13.jpg&healheight=1.2%20inches&SKU=SAU-TRM18-005&categories=Running%20Shoes,Sports&description=The%20Triumph%2018%20provides%20a%20smooth,%20plush%20ride%20thanks%20to%20its%20ample%20cushioning.&reviews=These%20shoes%20are%20incredibly%20cushioned,%20perfect%20for%20long%20runs.%20⭐⭐⭐⭐⭐|Great%20for%20recovery%20runs,%20feels%20like%20walking%20on%20clouds!%20⭐⭐⭐⭐⭐|Too%20much%20cushioning%20for%20my%20liking,%20but%20great%20for%20others.%20⭐⭐⭐⭐" class="cta-button">Buy Now</a>
+                <a href="#" class="cta-button-cart">Add Cart</a>
+            </div>
+            
+            <div class="product-card">
+                <img src="product14.webp" alt="Vans Old Skool" class="product-image">
+                <h3>Vans Old Skool</h3><br>
+                <p>A classic skate shoe with timeless style and comfort.</p><br>
+                <p><strong>Price:</strong> $60.00</p><br>
+                <p class="hide"><strong>Heel Height:</strong> 1.0 inches</p>
+                <p class="hide"><strong>SKU:</strong> VNS-OS-010</p>
+                <p class="hide"><strong>Categories:</strong> Casual Shoes, Sneakers</p>
+                <p class="hide"><strong>Description:</strong> The Old Skool features signature side stripes and sturdy canvas for everyday wear.</p>
+                <h4 class="hide">Reviews:</h4>
+                <ul class="hide">
+                    <li><strong>Liam J.:</strong> "Classic look, goes with everything!" ⭐⭐⭐⭐⭐</li>
+                    <li><strong>Sophie D.:</strong> "Comfortable and stylish, great for daily wear." ⭐⭐⭐⭐⭐</li>
+                    <li><strong>Jack S.:</strong> "Simple and durable, but could use more cushioning." ⭐⭐⭐⭐</li>
+                </ul>
+                <a href="product-details.html?name=Vans%20Old%20Skool&price=60.00&image=product14.webp&healheight=1.0%20inches&SKU=VNS-OS-010&categories=Casual%20Shoes,Sneakers&description=The%20Old%20Skool%20features%20signature%20side%20stripes%20and%20sturdy%20canvas%20for%20everyday%20wear.&reviews=Classic%20look,%20goes%20with%20everything!%20⭐⭐⭐⭐⭐|Comfortable%20and%20stylish,%20great%20for%20daily%20wear.%20⭐⭐⭐⭐⭐|Simple%20and%20durable,%20but%20could%20use%20more%20cushioning.%20⭐⭐⭐⭐" class="cta-button">Buy Now</a>
+                <a href="#" class="cta-button-cart">Add Cart</a>
+            </div>
+            
+            <div class="product-card">
+                <img src="product15.webp" alt="Puma Suede Classic" class="product-image">
+                <h3>Puma Suede Classic</h3><br>
+                <p>The iconic and sleek sneaker with a rich suede design.</p><br>
+                <p><strong>Price:</strong> $75.00</p><br>
+                <p class="hide"><strong>Heel Height:</strong> 1.1 inches</p>
+                <p class="hide"><strong>SKU:</strong> PUM-SSC-004</p>
+                <p class="hide"><strong>Categories:</strong> Casual Shoes, Sneakers</p>
+                <p class="hide"><strong>Description:</strong> The Puma Suede Classic combines comfort with a premium suede upper for a classic look.</p>
+                <h4 class="hide">Reviews:</h4>
+                <ul class="hide">
+                    <li><strong>James P.:</strong> "Stylish and comfortable, my favorite pair!" ⭐⭐⭐⭐⭐</li>
+                    <li><strong>Anna F.:</strong> "Very versatile, can wear them anywhere." ⭐⭐⭐⭐⭐</li>
+                    <li><strong>Dave M.:</strong> "Good quality but the material gets dirty easily." ⭐⭐⭐⭐</li>
+                </ul>
+                <a href="product-details.html?name=Puma%20Suede%20Classic&price=75.00&image=product15.webp&healheight=1.1%20inches&SKU=PUM-SSC-004&categories=Casual%20Shoes,Sneakers&description=The%20Puma%20Suede%20Classic%20combines%20comfort%20with%20a%20premium%20suede%20upper%20for%20a%20classic%20look.&reviews=Stylish%20and%20comfortable,%20my%20favorite%20pair!%20⭐⭐⭐⭐⭐|Very%20versatile,%20can%20wear%20them%20anywhere.%20⭐⭐⭐⭐⭐|Good%20quality%20but%20the%20material%20gets%20dirty%20easily.%20⭐⭐⭐⭐" class="cta-button">Buy Now</a>
+                <a href="#" class="cta-button-cart">Add Cart</a>
+            </div>
+            
+            </div>
+            
+           
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About FootWearX</h3>
+                <p>Discover high-quality footwear for all occasions. At FootWearX, we bring you the latest trends with comfort and durability.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Customer Service</h3>
+                <ul>
+                    <li><a href="./FAQs.html">FAQs</a></li>
+                    <li><a href="./S&R.html">Shipping & Returns</a></li>
+                    <li><a href="size-guide.html">Size Guide</a></li>
+                    <li><a href="Contact Us.html">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <a href="#">Facebook</a>
+                <a href="#">Instagram</a>
+                <a href="#">Twitter</a>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <p>Email: support@footwearx.com</p>
+                <p>Phone: +94 11 234 5678</p>
+                <p>Address: 123 Shoe Street, Colombo, Sri Lanka</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 FootWearX. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Open Filter Popup
+function openFilterPopup() {
+    document.getElementById("filterPopup").style.display = "block";
+}
+
+// Close Filter Popup
+function closeFilterPopup() {
+    document.getElementById("filterPopup").style.display = "none";
+}
+
+// Apply Filters
+function applyFilters() {
+    const selectedCategories = Array.from(document.querySelectorAll('input[name="category"]:checked')).map(cb => cb.value);
+    const minPrice = document.getElementById("minPrice").value;
+    const maxPrice = document.getElementById("maxPrice").value;
+    const selectedSizes = Array.from(document.querySelectorAll('input[name="size"]:checked')).map(cb => cb.value);
+    const selectedColors = Array.from(document.querySelectorAll('input[name="color"]:checked')).map(cb => cb.value);
+    const selectedBrands = Array.from(document.querySelectorAll('input[name="brand"]:checked')).map(cb => cb.value);
+    const sortBy = document.getElementById("sortBy").value;
+
+    console.log("Applied Filters:", {
+        categories: selectedCategories,
+        priceRange: [minPrice, maxPrice],
+        sizes: selectedSizes,
+        colors: selectedColors,
+        brands: selectedBrands,
+        sortBy: sortBy
+    });
+
+    closeFilterPopup();
+}
+
+// Reset Filters
+function resetFilters() {
+    document.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
+    document.getElementById("minPrice").value = 0;
+    document.getElementById("maxPrice").value = 500;
+    document.getElementById("sortBy").value = "price-low-to-high";
+    document.getElementById("minPriceValue").textContent = 0;
+    document.getElementById("maxPriceValue").textContent = 500;
+}
+
+// Update Price Range Display
+document.getElementById("minPrice").addEventListener("input", function() {
+    document.getElementById("minPriceValue").textContent = this.value;
+});
+
+document.getElementById("maxPrice").addEventListener("input", function() {
+    document.getElementById("maxPriceValue").textContent = this.value;
+});
+    </script>
+
+<script>
+    // Function to open the search overlay and hide the page content
+function openSearch() {
+    // Hide the main content of the page (optional: you can modify the code to fade out other content if needed)
+    document.body.style.overflow = "hidden"; // Prevent scrolling when search is open
+    document.getElementById("search-overlay").style.display = "flex"; // Show the search overlay
+}
+
+// Function to close the search overlay and show the page content again
+function closeSearch() {
+    document.body.style.overflow = "auto"; // Allow scrolling again
+    document.getElementById("search-overlay").style.display = "none"; // Hide the search overlay
+}
+
+</script>
+</body>
+</html>

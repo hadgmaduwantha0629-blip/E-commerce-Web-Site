@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./styles.css">
+    <title>FootWearX - About Us</title>
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: #f8f9fa;
+            color: #333;
+            text-align: center;
+        }
+
+        .container {
+        display: flex;
+        align-items: center; /* Align items vertically */
+        gap: 20px; /* Space between the video and the about section */
+        margin-top: 40px;
+    }
+
+    iframe {
+        flex: 1; /* Let the video take available space */
+        max-width: 560px; /* Prevent it from getting too large */
+        margin-top: 40px;
+        margin-left: 20px;
+        border-radius: 20px;
+        pointer-events: none;
+        height: 400px;
+    }
+
+
+
+    .about-section {
+        flex: 1; /* Let the about section take available space */
+        margin-top: 80px;
+        backdrop-filter: blur(10px); 
+        border-radius: 20px;
+        
+        
+    }
+        /* About Us Section */
+        .about-section {
+           
+            
+            color: rgb(0, 0, 0);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 400px;
+        }
+
+        .about-section h1 {
+            font-size: 35px;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .about-section p {
+            font-size: 15px;
+            max-width: 600px;
+            margin-top: 10px;
+            line-height: 1.6;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            padding: 10px;
+            margin-top: 40px;
+            font-size: 14px;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .brand-logos {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 30px; /* Space between logos */
+        height: 70px; /* Set fixed height */
+        background-color: rgba(255, 255, 255, 0); /* Light background */
+        padding: 5px 0;
+        border-radius: 40px;
+    }
+
+    .brand-logos img {
+        height: 100%; /* Ensure logos fit within 40px */
+        width: 70px; /* Maintain aspect ratio */
+        border-radius: 20px;
+    }
+
+
+    .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: url('abbg.jpg') no-repeat center center;
+            background-size: cover;
+            filter: blur(5px);
+            z-index: -1;
+            animation: mymove 7s ease-in;
+        }
+
+        @keyframes mymove {
+            from { background-image: url('abbg.jpg'); }
+            to { background-image: url('abbg.jpg'); }
+        }
+
+        .watermark-line {
+        position: absolute;
+        top: 50%; /* Place at center */
+        left: 0;
+        margin-left: 20px;
+        margin-top: 189px;
+        width: 560px; /* Adjust width as needed */
+        height: 51px; /* Adjust height as needed */
+        background-color: rgb(10, 46, 88); /* White semi-transparent line */
+        pointer-events: none; /* Allow clicking through */
+        border-radius:20px;
+        border-top-left-radius: 0; /* Remove top-left border radius */
+        border-top-right-radius: 0; /* Remove top-right border radius */
+    }
+
+    .video-container {
+        position: relative;
+        width: 560px; /* Adjust width as needed */
+        height: 400px;
+    }
+
+    .video-container iframe {
+        width: 100%;
+        height: 100%;
+        display: block;
+    }
+
+    
+/* Search Icon */
+#search-icon {
+    cursor: pointer;
+}
+
+/* Fullscreen Search Overlay */
+.search-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Dark transparent background */
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #ffffff3b;
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 500px;
+}
+
+#search-bar {
+  
+    width: 100%;
+    padding: 10px;
+    font-size: 18px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+ 
+}
+
+button {
+    padding: 10px 20px;
+    background-color: rgb(10, 46, 88);
+    color: rgb(255, 255, 255);
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: rgb(89, 255, 255);
+    color: black;
+}
+
+/* Style for closing the search */
+button {
+    margin-top: 10px;
+}
+    </style>
+</head>
+<body>
+    <div class="background"></div>
+    <header>
+        <nav>
+            <div class="logo"><strong style="background-color: rgb(10, 46, 88);">FootWear <strong style="background-color: rgb(89, 255, 255); color: rgb(10, 46, 88);">X</strong></strong></div>
+            <ul class="nav-links">
+                
+                <li><a href="Home.html">Home</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><strong><a style="pointer-events: none; color: rgb(255, 255, 255); font-size: 20px;" href="About Us.html">About Us</a></strong></li>
+                <li><a href="Contact Us.html">Contact Us</a></li>
+                <li><a href="Login.html">Login</a></li>
+                <li><a href="Sign Up.html">Sign Up</a></li>
+                <li> <a href="#"><i style="font-size: 30px;" class="fa fa-shopping-cart"></i></a></li>
+            <!-- Magnifying Glass for Search -->
+            <li><a href="#" id="search-icon" onclick="openSearch()"><i style="font-size: 30px;" class="fa fa-search"></i></a></li>
+        </ul>
+    </nav>
+
+    <button id="btnhide" onmouseover="changeText()" onmouseout="resetText()" onclick="toggleFeedbackSidebar() ,hide()" class="cta-button1" style="display: none; border: none; float: right; margin-top: 38px; margin-right: 20px;">How was our service?</button>
+
+    <!-- Fullscreen Search Bar (Hidden Initially) -->
+    <div id="search-overlay" class="search-overlay">
+        <div class="search-container">
+            <input style="border-radius: 20px;" type="text" id="search-bar" placeholder="Search for products..." />
+            <button onclick="closeSearch()">Close</button>
+        </div>
+    </div>
+</header>
+    <div class="container">
+        
+      
+<div class="video-container">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/opYvvBHEGks?si=YJNnKggObR8huI8F&autoplay=1&mute=1" 
+        title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+    </iframe>
+    <div style="padding-top: 7px;" class="watermark-line"><div class="logo"><strong style="background-color: rgb(10, 46, 88);">FootWear <strong style="background-color: rgb(89, 255, 255); color: rgb(10, 46, 88);">X</strong></strong></div></div> <!-- Watermark Line -->
+</div>
+    
+        <section class="about-section">
+            <h1>About Us</h1>
+            <p>Welcome to FootWearX, your go-to destination for stylish, high-quality footwear. We believe every step should reflect your personality, blending fashion with comfort.
+
+                As proud business partners with top brands like Nike, Adidas, and other premium labels, we bring you the best in branded footwear. Our mission is to deliver top-tier shoes that combine innovation, style, and functionality—ensuring you step forward with confidence.</p>
+            <p>Our mission is to provide high-quality shoes that combine fashion and functionality.</p>
+        </section>
+    </div>
+<br><br><br>
+    <div class="brand-logos">
+        <img src="nikelogo.png" alt="Nike">
+        <img src="adidaslogo.png" alt="Adidas">
+        <img src="pumalogo.png" alt="Puma">
+        <img src="rblogo.png" alt="Reebok">
+        <img src="newblogo.png" alt="New Balance">
+    </div>
+
+ <!-- Footer -->
+ <footer>
+    <div class="footer-content">
+        <div class="footer-section">
+            <h3>About FootWearX</h3>
+            <p>Discover high-quality footwear for all occasions. At FootWearX, we bring you the latest trends with comfort and durability.</p>
+        </div>
+        <div class="footer-section">
+            <h3>Customer Service</h3>
+            <ul>
+                <li><a href="./FAQs.html">FAQs</a></li>
+                <li><a href="./S&R.html">Shipping & Returns</a></li>
+                <li><a href="size-guide.html">Size Guide</a></li>
+                <li><a href="Contact Us.html">Contact Us</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h3>Follow Us</h3>
+            <a href="#">Facebook</a>
+            <a href="#">Instagram</a>
+            <a href="#">Twitter</a>
+        </div>
+        <div class="footer-section">
+            <h3>Contact Info</h3>
+            <p>Email: support@footwearx.com</p>
+            <p>Phone: +94 11 234 5678</p>
+            <p>Address: 123 Shoe Street, Colombo, Sri Lanka</p>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2025 FootWearX. All rights reserved.</p>
+    </div>
+</footer>
+
+<script>
+    // Function to open the search overlay and hide the page content
+function openSearch() {
+    // Hide the main content of the page (optional: you can modify the code to fade out other content if needed)
+    document.body.style.overflow = "hidden"; // Prevent scrolling when search is open
+    document.getElementById("search-overlay").style.display = "flex"; // Show the search overlay
+}
+
+// Function to close the search overlay and show the page content again
+function closeSearch() {
+    document.body.style.overflow = "auto"; // Allow scrolling again
+    document.getElementById("search-overlay").style.display = "none"; // Hide the search overlay
+}
+
+</script>
+</body>
+</html>
+
+
+

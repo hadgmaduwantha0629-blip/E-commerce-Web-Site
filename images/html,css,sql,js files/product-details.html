@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>FootWearX - Pro_Details</title>
+
+    <style>
+
+        
+        /* Footer */
+        footer {            
+            padding: 2em 0;
+            font-family: Arial, sans-serif;
+            background: #333;
+            color: white;
+            padding: 10px;
+            margin-top: 40px;
+            font-size: 12px;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+            margin: 10px;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 10px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-section ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .footer-section p {
+            margin: 5px 0;
+        }
+
+        .footer-section a {
+            color: white;
+            text-decoration: none;
+            margin-right: 10px;
+        }
+
+        .footer-section a:hover {
+            text-decoration: underline;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .footer-bottom p {
+            margin: 0;
+        }
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, rgb(10,46,88) 28%, rgb(89, 255, 255) );
+            color: #333;
+        }
+
+        .product-container {
+            display: flex;
+            padding: 40px;
+            max-width: 1500px;
+            margin-top: 20px;
+            margin-left: 10px;
+            margin-right: 10px;
+            background: linear-gradient(135deg, rgb(247, 248, 250) 28%, rgba(154, 243, 243, 0.659) );
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.195);
+            border-radius: 10px;
+        }
+
+        .product-image img { 
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        .product-details {
+            margin-left: 30px;
+            width: 50%;
+        }
+
+        h1 {
+            font-size: 30px;
+            font-weight: 600;
+            color: #000000;
+        }
+
+        .price {
+            font-size: 28px;
+            color: #e74c3c;
+            font-weight: bold;
+        }
+
+        .installment {
+            color: #000000;
+            font-size: 16px;
+        }
+
+        .color-selection, .size-selection {
+            margin: 20px 0;
+        }
+
+        label {
+            font-weight: 500;
+            color: #2c3e50;
+        }
+
+        select {
+            padding: 10px;
+            margin-left: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .size-guide {
+            margin-left: 10px;
+            color: #3498db;
+            text-decoration: none;
+        }
+
+        .heel-height {
+            font-size: 18px;
+            color: #333;
+        }
+
+        .buy-now {
+            background-color: #3498db;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        .buy-now:hover {
+            background-color: #2980b9;
+        }
+
+        .customer-service {
+            margin-top: 25px;
+        }
+
+        .customer-service a {
+            display: block;
+            margin: 5px 0;
+            color: #3498db;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .customer-service a:hover {
+            color: #2980b9;
+        }
+
+        .product-info {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #000000;
+        }
+
+        .description, .reviews {
+            margin-top: 30px;
+        }
+
+        .related-products {
+            margin-top: 50px;
+            margin-left: 10px;
+            margin-right: 10px;
+            padding: 40px;
+            background: linear-gradient(135deg, rgba(4, 25, 68, 0.882) 28%, rgba(8, 223, 223, 0.659) );
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        .related-products h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #ffffff;
+        }
+
+        .related-products-list {
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+        }
+
+        .related-product {
+            width: 200px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            background-color: #f9f9f9;
+            transition: transform 0.3s ease;
+        }
+
+        .related-product:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .related-product img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .related-product h3 {
+            font-size: 16px;
+            color: #000000;
+            margin-top: 10px;
+        }
+
+        .related-product p {
+            font-size: 14px;
+            color: #e74c3c;
+            font-weight: bold;
+            margin-top: 5px;
+        }
+
+
+        /* Sidebar Navigation */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 100px;
+            height: 85vh;
+            background: rgba(255, 255, 255, 0); /* Transparent */
+            transition: background 0.3s ease-in-out;
+            padding-top: 50px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            margin-top: 20px;
+            margin-left: 20px;
+            margin-right: 10px;
+            margin-bottom: 20px;
+        }
+
+        .sidebar:hover {
+            background: rgba(255, 255, 255, 0.9); /* Changes color on hover */
+            a{
+                color: #00000098;
+            }
+        }
+        a:hover{
+            color: black;
+        }
+
+        .sidebar a {
+            text-decoration: none;
+            color: #33333325;
+            font-size: 18px;
+            padding: 15px;
+            max-width:  75px;
+            text-align: center;
+            display: block;
+            transition: color 0.3s ease;
+            z-index: -1;
+        }
+
+        .sidebar a:hover {
+            background: #3498db;
+            color: white;
+            width: 60px;
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar {
+    width: 8px; /* Scrollbar width */
+}
+
+::-webkit-scrollbar-track {
+    background: linear-gradient(135deg, rgb(10,46,88) 28%, rgb(89, 255, 255) );
+    
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg,  rgb(89, 255, 255),rgb(10,46,88) 49%  );
+    border-radius: 10px;
+    position: relative;
+    display: fixed;
+    justify-content: center;
+    align-items: center;
+}
+
+.cta-button {
+            display: inline-block;
+            background: #ff7e5f;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+        .cta-button:hover {
+            background: linear-gradient(135deg, rgb(10,46,88) 18%, rgb(89, 255, 255));
+            
+            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+            
+        }
+        #r:hover{
+            color: white;
+        }
+
+        #cart{
+            color: #120936;
+        }
+
+        #cart:hover{
+            transform: scale(1.2);
+            
+        }
+
+        
+/* Search Icon */
+#search-icon {
+    cursor: pointer;
+}
+
+/* Fullscreen Search Overlay */
+.search-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Dark transparent background */
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #ffffff3b;
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 500px;
+}
+
+#search-bar {
+  
+    width: 100%;
+    padding: 10px;
+    font-size: 18px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+ 
+}
+
+button {
+    padding: 10px 20px;
+    background-color: rgb(10, 46, 88);
+    color: rgb(255, 255, 255);
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: rgb(89, 255, 255);
+    color: black;
+}
+
+/* Style for closing the search */
+button {
+    margin-top: 10px;
+}
+
+        
+        
+    </style>
+</head>
+<body>
+
+     <!-- Sidebar Navigation -->
+     <div class="sidebar">
+        <a href="./Home.html"><i style="font-size: 40px;" class="fa fa-home" ></i></a><br>
+        <a href="./About Us.html"><i style="font-size: 40px;" class="fa fa-info-circle" ></i></a><br>
+        <a href="./Contact Us.html"><i style="font-size: 40px;" class="fa fa-envelope"></i></a><br>
+        <a href="./Login.html"><i style="font-size: 40px;" class="fa fa-user" ></i></a><br>
+        <a href="./Sign Up.html"><i style="font-size: 40px;" class="fa fa-user-plus" ></i></a>
+        <a href="#"><i style="font-size: 40px;" class="fa fa-shopping-cart"></i></a>
+        <!-- Magnifying Glass for Search -->
+        <a href="#" id="search-icon" onclick="openSearch()"><i style="font-size: 30px;" class="fa fa-search"></i></a>
+    
+
+
+<button id="btnhide" onmouseover="changeText()" onmouseout="resetText()" onclick="toggleFeedbackSidebar() ,hide()" class="cta-button1" style="display: none; border: none; float: right; margin-top: 38px; margin-right: 20px;">How was our service?</button>
+
+<!-- Fullscreen Search Bar (Hidden Initially) -->
+<div id="search-overlay" class="search-overlay">
+    <div class="search-container">
+        <input style="border-radius: 20px;" type="text" id="search-bar" placeholder="Search for products..." />
+        <button onclick="closeSearch()">Close</button>
+    </div>
+</div>
+
+    </div>
+
+    <div class="product-container">
+        <!-- Product Image Section -->
+        <div class="product-image">
+            <img id="product-image" src="" alt="Fiona Blade Heels" style="max-width: 100%; height: auto; border-radius: 8px;">
+        </div>
+
+        <!-- Product Details Section -->
+        <div class="product-details">
+            <h1 id="product-name">Fiona Blade Heels</h1>
+            <p id="product-price" class="price">Rs. 7,850.00</p>
+            <p class="installment">Pay in 3 interest-free payments of Rs. 2,224.17 with KOKO or MINTPAY</p>
+
+            <!-- Color Selection -->
+            <div class="color-selection">
+                <label for="color">Color:</label>
+                <select id="color">
+                    <option value="white">White</option>
+                    <option value="coffee">Coffee</option>
+                </select>
+            </div>
+
+            <!-- Size Selection -->
+            <div class="size-selection">
+                <label for="size">Size:</label>
+                <select id="size">
+                    <option value="33">33</option>
+                    <option value="35">35</option>
+                    <option value="36">36</option>
+                    <option value="37">37</option>
+                    <option value="38">38</option>
+                    <option value="39">39</option>
+                    <option value="40">40</option>
+                    <option value="41">41</option>
+                </select>
+                <a href="#" class="size-guide">Size Guide</a>
+            </div>
+
+            <!-- Heel Height -->
+            <p id="product-heelheight" class="heel-height">Heel Height: 3 inch</p>
+
+            <!-- Buy Now Button -->
+            <a id="r" href="./purchase.html" class="cta-button">Purchase Now</a><br><br>
+            <a id="cart" href="#"><i style="font-size: 40px;" class="fa fa-shopping-cart"></i></a>
+            <!-- Customer Service Links -->
+            <div class="customer-service">
+                <p>Do you have a question? Contact our customer service.</p>
+                <a href="https://wa.me/94775310954" class="whatsapp">WhatsApp</a>
+                <a href="tel:+94775310954" class="call-us">Call Us</a>
+                <a href="mailto:support@laydeez.lk" class="email-us">Email Us</a>
+            </div>
+ 
+            <!-- SKU and Categories -->
+            <div class="product-info">
+                <p id="product-sku"><strong>SKU:</strong> LSFBH</p>
+                <p id="product-categories"><strong>Categories:</strong> Heels, AURORA, New in</p>
+            </div>
+
+            <!-- Description -->
+            <div class="description">
+                <h2>Description</h2>
+                <p id="product-description"></p>
+            </div>
+
+            <!-- Reviews -->
+            <div class="reviews">
+                <h2>Reviews</h2>
+                <p id="product-reviews">.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Related Products Section -->
+    <div class="related-products">
+        <h2>YOU MAY ALSO LIKE</h2>
+        <div class="related-products-list" id="related-products"></div>
+    </div>
+   
+    <!-- JavaScript -->
+    <script>
+    // Sample data for related products
+const relatedProducts = [
+    {
+        name: "Nike Air Max Dn8",
+        price: "$190.99",
+        image: "./product1.png",
+        url: "product-details.html?name=Nike%20Air%20Max%20Dn8&price=190.99&image=product1.png&healheight=1.5%20inches&SKU=NIK-AMD8-001&categories=Running%20Shoes,Sneakers,Men's%20Footwear&description=Experience%20unparalleled%20comfort%20and%20movement%20with%20the%20Nike%20Air%20Max%20Dn8,%20featuring%20responsive%20cushioning%20and%20a%20sleek%20design.&reviews=Super%20comfortable%20and%20stylish!%20Worth%20the%20price.%20⭐⭐⭐⭐⭐|Perfect%20for%20running,%20great%20support!%20⭐⭐⭐⭐⭐|Love%20the%20design,%20but%20the%20size%20runs%20a%20bit%20small.%20⭐⭐⭐⭐|Very%20durable%20and%20lightweight,%20I%20wear%20them%20daily.%20⭐⭐⭐⭐⭐|Good%20quality,%20but%20took%20a%20while%20to%20break%20in.%20⭐⭐⭐⭐"
+    },
+    {
+        name: "Nike C1TY",
+        price: "$100.00",
+        image: "./product2.png",
+        url: "product-details.html?name=Nike%20C1TY&price=100.00&image=product2.png&healheight=1.2%20inches&SKU=NIK-C1TY-002&categories=Running%20Shoes,Casual%20Wear,Men's%20Footwear&description=A%20mesh%20upper%20keeps%20the%20fit%20breathable,%20making%20this%20an%20excellent%20choice%20for%20everyday%20wear%20and%20running.&reviews=Very%20comfortable%20and%20stylish.%20⭐⭐⭐⭐⭐|Breathability%20is%20great,%20but%20sizing%20runs%20a%20bit%20tight.%20⭐⭐⭐⭐|Perfect%20for%20casual%20wear,%20love%20it!%20⭐⭐⭐⭐⭐|Could%20use%20more%20cushioning,%20but%20overall%20great%20value.%20⭐⭐⭐⭐|Lightweight%20and%20flexible,%20good%20for%20jogging.%20⭐⭐⭐⭐⭐"
+    },
+    {
+        name: "Eezay Flip-flop",
+        price: "$50.59",
+        image: "./product3.avif",
+        url: "product-details.html?name=Eezay%20Flip-Flops&price=50.59&image=product3.avif&healheight=0.5%20inches&SKU=PUMA-EEZAY-003&categories=Flip-Flops,Casual,Beach%20Wear&description=Lightweight%20and%20durable%20flip-flops%20designed%20for%20everyday%20comfort%20and%20casual%20outings.&reviews=Super%20comfy%20and%20perfect%20for%20the%20beach!%20⭐⭐⭐⭐⭐|Very%20lightweight,%20but%20could%20use%20more%20arch%20support.%20⭐⭐⭐⭐|Affordable%20and%20durable,%20love%20it!%20⭐⭐⭐⭐⭐|Simple%20design%20but%20high%20quality.%20⭐⭐⭐⭐|Great%20for%20summer,%20easy%20to%20slip%20on%20and%20off.%20⭐⭐⭐⭐⭐"
+    },
+    {
+        name: "Speedcat OG",
+        price: "$271.12",
+        image: "./product4.avif",
+        url: "product-details.html?name=Speedcat%20OG&price=271.12&image=product4.avif&healheight=1.8%20inches&SKU=SPD-OG-004&categories=Formal,Luxury,Office%20Wear&description=Designed%20for%20formal%20occasions%20and%20office%20wear,%20the%20Speedcat%20OG%20offers%20premium%20style%20and%20durability.&reviews=David%20S.%3A%20Very%20elegant%20and%20comfortable!%20⭐⭐⭐⭐⭐%7CJessica%20B.%3A%20Looks%20professional,%20but%20takes%20time%20to%20break%20in.%20⭐⭐⭐⭐%7CTom%20H.%3A%20Excellent%20quality,%20worth%20the%20price.%20⭐⭐⭐⭐⭐%7CRachel%20F.%3A%20Fits%20perfectly%20with%20my%20suits,%20love%20it.%20⭐⭐⭐⭐⭐%7CAndrew%20M.%3A%20Very%20classy%20and%20stylish,%20but%20needs%20polishing%20often.%20⭐⭐⭐⭐" 
+    },
+    {
+        name: "floatZig X1 Shoes",
+        price: "$199.99",
+        image: "./product5.webp",
+        url: "product-details.html?name=floatZig%20X1%20Shoes&price=199.99&image=product5.webp&healheight=1.7%20inches&SKU=FLT-ZIGX1-005&categories=Running%20Shoes,Performance,Lightweight&description=Lightweight%20running%20shoes%20designed%20for%20fast%20training%20and%20high%20performance.&reviews=Kevin%20P.%3A%20Amazing%20for%20fast%20runs%2C%20very%20responsive!%20⭐⭐⭐%7CSandra%20L.%3A%20Super%20light%2C%20almost%20feels%20like%20walking%20on%20air.%20⭐%7CChris%20D.%3A%20Great%20grip%2C%20but%20could%20use%20more%20arch%20support.%20⭐⭐⭐⭐%7CNina%20W.%3A%20Perfect%20for%20long-distance%20running.%20⭐⭐⭐⭐⭐%7CTom%20J.%3A%20Really%20comfortable%2C%20but%20expensive.%20⭐⭐⭐⭐"
+    },
+    {
+        name: "Adidas Ultraboost",
+        price: "$179.99",
+        image: "./product6.avif",
+        url: "product-details.html?name=Adidas%20Ultraboost&price=179.99&image=product6.avif&healheight=1.8%20inches&SKU=ADI-ULB-001&categories=Running%20Shoes,Sneakers&description=Adidas%20Ultraboost%20delivers%20premium%20cushioning%20for%20long-lasting%20comfort.&reviews=Great%20support,%20feels%20amazing%20on%20my%20feet!%20⭐⭐⭐⭐⭐|Perfect%20for%20running,%20I%20feel%20more%20energized.%20⭐⭐⭐⭐⭐|Great%20fit,%20though%20a%20bit%20expensive.%20⭐⭐⭐⭐"
+    }
+];
+
+// Function to display related products
+function displayRelatedProducts() {
+    const relatedProductsContainer = document.getElementById("related-products");
+    relatedProductsContainer.innerHTML = "";
+
+    relatedProducts.forEach((product) => {
+        const productDiv = document.createElement("div");
+        productDiv.className = "related-product";
+
+        productDiv.innerHTML = `
+            <img src="${product.image}" alt="${product.name}">
+            <h3>${product.name}</h3>
+            <p>${product.price}</p>
+            <a href="${product.url}" class="cta-button">Buy Now</a>
+        `;
+
+        relatedProductsContainer.appendChild(productDiv);
+    });
+}
+
+// Call the function to display related products
+displayRelatedProducts();
+
+    </script>
+
+<script>
+    // Get the query parameters from the URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const productName = urlParams.get('name');
+    const productPrice = urlParams.get('price');
+    const productImage = urlParams.get('image');
+    const heelHeight = urlParams.get('healheight');
+    const sku = urlParams.get('SKU');
+    const categories = urlParams.get('categories');
+    const description = urlParams.get('description');
+    const reviews = urlParams.get('reviews');
+
+    // Update the product details on the page
+    document.getElementById('product-name').textContent = productName;
+    document.getElementById('product-price').textContent = 'Price: $' + productPrice;
+    document.getElementById('product-image').src = productImage;
+    document.getElementById('product-heelheight').textContent = 'Heel Height: ' + heelHeight;
+    document.getElementById('product-sku').textContent = 'SKU: ' + sku;
+    document.getElementById('product-categories').textContent = 'Categories: ' + categories;
+    document.getElementById('product-description').textContent = description;
+
+    // Display reviews dynamically
+    const reviewsList = document.getElementById('product-reviews');
+    if (reviews) {
+        const reviewArray = reviews.split('|'); // Assuming reviews are separated by "|"
+        reviewArray.forEach(review => {
+            const li = document.createElement('li');
+            li.textContent = review;
+            reviewsList.appendChild(li);
+        });
+    }
+</script>
+
+<script>
+    // Function to open the search overlay and hide the page content
+function openSearch() {
+    // Hide the main content of the page (optional: you can modify the code to fade out other content if needed)
+    document.body.style.overflow = "hidden"; // Prevent scrolling when search is open
+    document.getElementById("search-overlay").style.display = "flex"; // Show the search overlay
+}
+
+// Function to close the search overlay and show the page content again
+function closeSearch() {
+    document.body.style.overflow = "auto"; // Allow scrolling again
+    document.getElementById("search-overlay").style.display = "none"; // Hide the search overlay
+}
+
+</script>
+</body>
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About FootWearX</h3>
+                <p>Discover high-quality footwear for all occasions. At FootWearX, we bring you the latest trends with comfort and durability.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Customer Service</h3>
+                <ul>
+                    <li><a href="./FAQs.html">FAQs</a></li>
+                    <li><a href="./S&R.html">Shipping & Returns</a></li>
+                    <li><a href="size-guide.html">Size Guide</a></li>
+                    <li><a href="Contact Us.html">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <a href="#">Facebook</a>
+                <a href="#">Instagram</a>
+                <a href="#">Twitter</a>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <p>Email: support@footwearx.com</p>
+                <p>Phone: +94 11 234 5678</p>
+                <p>Address: 123 Shoe Street, Colombo, Sri Lanka</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 FootWearX. All rights reserved.</p>
+        </div>
+    </footer>
+</html>

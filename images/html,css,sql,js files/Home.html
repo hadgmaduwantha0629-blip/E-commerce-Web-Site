@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>FootWearX - Home</title>
+    <link rel="stylesheet" href="./styles.css">
+    <style>
+        /* Background Animation */
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: url('bg.jpg') no-repeat center center;
+            background-size: cover;
+            filter: blur(5px);
+            z-index: -1;
+            animation: mymove 7s ease-in;
+        }
+
+        @keyframes mymove {
+            from { background-image: url('bgdark.jpg'); }
+            to { background-image: url('bg.jpg'); }
+        }
+
+       
+
+        /* Hero Section */
+        .hero {
+            background: url('shoe-banner.jpg') center/cover no-repeat;
+            color: white;
+            padding: 100px 20px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 400px;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 50px;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin: 10px 0;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #ff7e5f;
+            color: white;
+            padding: 12px 24px;
+            margin-top: 15px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            transition: 0.3s ease-in-out;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        .cta-button:hover {
+            background: linear-gradient(135deg, rgb(10,46,88) 18%, rgb(89, 255, 255));
+            
+            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+            
+        }
+
+        .cta-button1 {
+            display: inline-block;
+            backdrop-filter: blur(12px);
+            background: rgba(255, 255, 255, 0.015);
+            padding: 12px 24px;
+            margin-top: 10px;
+            border-radius: 25px;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+ 
+        }
+
+        .cta-button1:hover {
+            background: linear-gradient(135deg, rgb(246, 84, 72) 18%, rgb(89, 255, 255));
+            color:rgb(10,46,88)  ;
+            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+            
+        }
+
+        /* Featured Products */
+        .featured-products {
+            padding: 50px 20px;
+        }
+
+        .section-title {
+            font-size: 32px;
+            color: #ffffff;
+            margin-bottom: 20px;
+        }
+
+        .product-grid {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .product-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 250px;
+            height: 270px;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease-in-out, height 0.5s ease-in-out;
+        }
+
+        .product-card:hover {
+            transform: scale(1.1);
+            height: 415px;
+        }
+
+        .product-image {
+            width: 100%;
+            height: 130px;
+            border-radius: 10px;
+        }
+
+        .product-details {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+        }
+
+        .product-card:hover .product-details {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Feedback Sidebar */
+        .feedback-sidebar {
+            position: absolute;
+            right: -350px; /* Hidden by default */
+            top: 0;
+            width: 300px;
+            margin-top: 95px;
+            margin-right: 10px;
+            border-radius: 30px;
+            height: 70%;
+            background: linear-gradient(135deg, rgb(10, 46, 88) 28%, rgb(89, 255, 255));
+            color: white;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            
+            transition: right 0.5s ease-in-out;
+            box-shadow: -5px 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .feedback-sidebar.show-sidebar {
+            right: 0; /* Show sidebar */
+        }
+
+        .feedback-sidebar:hover {
+            display: block;
+            height: 100%;
+            
+            
+        }
+        .feedback-sidebar h2 {
+            margin-top: 0;
+            font-size: 24px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .feedback-sidebar button {
+            background: #ff7e5f;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            margin-top: 10px;
+            font-size: 18px;
+            border-radius: 25px;
+            transition: background 0.3s ease-in-out, transform 0.3s ease-in-out;
+        }
+
+        .feedback-sidebar button:hover {
+            background: linear-gradient(135deg, rgb(10, 46, 88) 18%, rgb(89, 255, 255));
+            transform: scale(1.05);
+        }
+
+        .minimize-btn {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            font-size: 20px;
+            align-items: center;
+            background-color: none;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.3s ease-in-out;
+
+        }
+
+
+
+        .feedback-form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .feedback-form input,
+        .feedback-form textarea {
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 16px;
+            transition: border-color 0.3s ease-in-out;
+        }
+
+        .feedback-form input::placeholder,
+        .feedback-form textarea::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .feedback-form input:focus,
+        .feedback-form textarea:focus {
+            border-color: #ff7e5f;
+            outline: none;
+        }
+
+        .feedback-form textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        #feedbackList {
+            flex-grow: 1;
+            overflow-y: auto;
+            margin-bottom: 20px;
+        }
+
+        .feedback-entry {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            color: white;
+            font-size: 14px;
+            transition: background 0.3s ease-in-out;
+        }
+
+        .feedback-entry:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .cta-button-cart {
+            display: inline-block;
+            background: #ff7e5f;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.3s;
+            animation: fadeIn 2s ease-in-out;
+        }
+        .cta-button-cart:hover {
+            background: linear-gradient(135deg, rgb(255, 43, 1) 18%, rgb(229, 179, 1));
+            
+            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+            
+        }
+
+        
+                /* Falling Shoe Animation */
+                .container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+
+        .shoe {
+            position: absolute;
+            top: -100px;
+            width: 50px;
+            height: 50px;
+            background-size: cover;
+            background-position: center;
+            animation: fall 2s linear infinite, bounce 1s ease-in-out infinite;
+        }
+
+        /* Falling Animation */
+        @keyframes fall {
+            0% {
+                top: -100px;
+            }
+            100% {
+                top: 100vh;
+            }
+        }
+
+        /* Bounce Animation */
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+ 
+
+/* Search Icon */
+#search-icon {
+    cursor: pointer;
+}
+
+/* Fullscreen Search Overlay */
+.search-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Dark transparent background */
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #ffffff3b;
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 500px;
+}
+
+#search-bar {
+  
+    width: 100%;
+    padding: 10px;
+    font-size: 18px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+ 
+}
+
+button {
+    padding: 10px 20px;
+    background-color: rgb(10, 46, 88);
+    color: rgb(255, 255, 255);
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: rgb(89, 255, 255);
+    color: black;
+}
+
+/* Style for closing the search */
+button {
+    margin-top: 10px;
+}
+
+
+
+html, body {
+
+
+    overflow-x: hidden;  /* Prevent scrolling */
+}
+
+.image-box {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 10px; /* Adjusts the space between images */
+  margin: 10px;
+  position: relative;
+}
+
+.image-item {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.image-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.overlay {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.overlay p {
+  margin: 0;
+}
+
+.overlay button {
+  background-color: #f39c12;
+  border: none;
+  padding: 8px 15px;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.overlay button:hover {
+  background-color: #e67e22;
+}
+
+.slider-container {
+  width: 100%;
+  max-width: 100%; /* You can adjust the width */
+  overflow: hidden;
+  margin-left:10px;
+  margin-right: 10px;
+  padding: 10px 0;
+}
+
+.slider {
+  display: flex;
+  transition: transform 1s ease-in-out;
+}
+
+.slider-item {
+  min-width: 100%;
+  margin-left: 10px; /* 10px margin on left and right of each image */
+  margin-right: 10px;
+}
+
+.slider-item img {
+  width: 1400px;
+  height: 900px;
+  object-fit: cover;
+}
+
+.membership-promo {
+  display: flex;
+
+  align-items: center;
+  background-color: yellow;
+  height: 150px;
+  padding: 10px 20px;
+  margin: 20px 0;
+  border-radius: 5px;
+}
+
+.promo-message {
+  font-size: 40px;
+  font-weight: bold;
+  color: black;
+  margin-left: 400px;
+}
+
+.sign-up-btn {
+  background-color: #f39c12; /* Button color */
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: 15px;
+
+}
+
+.sign-up-btn:hover {
+    background: linear-gradient(135deg, rgb(10, 46, 88) 18%, rgb(89, 255, 255));
+    transform: scale(1.05);
+}
+
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Shoe elements with different images -->
+        <div class="shoe" style="left: 10%; background-image: url('./anime1.png');"></div>
+        <div class="shoe" style="left: 30%; background-image: url('./anime2.png');"></div>
+        <div class="shoe" style="left: 50%; background-image: url('./anime3.png');"></div>
+        <div class="shoe" style="left: 70%; background-image: url('./anime4.png');"></div>
+        <div class="shoe" style="left: 90%; background-image: url('./anime5.png');"></div>
+        <div class="shoe" style="left: 10%; background-image: url('./anime1.png');"></div>
+        <div class="shoe" style="left: 30%; background-image: url('./anime2.png');"></div>
+        <div class="shoe" style="left: 30%; background-image: url('./anime2.png');"></div>
+        <div class="shoe" style="left: 11%; background-image: url('./anime2.png');"></div>
+        <div class="shoe" style="left: 35%; background-image: url('./anime3.png');"></div>
+        <div class="shoe" style="left: 45%; background-image: url('./anime3.png');"></div>
+        <div class="shoe" style="left: 65%; background-image: url('./anime4.png');"></div>
+    </div>
+
+    <div class="background"></div>
+    <header>
+        <nav>
+            <div class="logo"><strong style="background-color: rgb(10, 46, 88);">FootWear <strong style="background-color: rgb(89, 255, 255); color: rgb(10, 46, 88);">X</strong></strong></div>
+            <ul class="nav-links">
+                <li><strong><a style="pointer-events: none; color: rgb(255, 255, 255); font-size: 20px;" href="Home.html">Home</a></strong></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="About Us.html">About Us</a></li>
+                <li><a href="Contact Us.html">Contact Us</a></li>
+                <li><a href="Login.html">Login</a></li>
+                <li><a href="Sign Up.html">Sign Up</a></li>
+                <li><a href="#"><i style="font-size: 30px;" class="fa fa-shopping-cart"></i></a></li>
+                <!-- Magnifying Glass for Search -->
+                <li><a href="#" id="search-icon" onclick="openSearch()"><i style="font-size: 30px;" class="fa fa-search"></i></a></li>
+            </ul>
+        </nav>
+    
+        <button id="btnhide" onmouseover="changeText()" onmouseout="resetText()" onclick="toggleFeedbackSidebar() ,hide()" class="cta-button1" style="display: none; border: none; float: right; margin-top: 38px; margin-right: 20px;">How was our service?</button>
+    
+        <!-- Fullscreen Search Bar (Hidden Initially) -->
+        <div id="search-overlay" class="search-overlay">
+            <div class="search-container">
+                <input style="border-radius: 20px;" type="text" id="search-bar" placeholder="Search for products..." />
+                <button onclick="closeSearch()">Close</button>
+            </div>
+        </div>
+    </header>
+      
+        <section class="hero">
+            <h1>Step into Style</h1>
+               <p>Discover the latest trends in footwear.</p>
+               <a href="./products.html" class="cta-button">Shop Now</a>
+           </section>
+   
+
+    
+
+    <section class="featured-products">
+        
+        <h2 class="section-title">Featured Products</h2>
+        <div class="product-grid">
+            <div class="product-card">
+                <img src="./product1.png" alt="Shoe 1" class="product-image">
+                <h3>Nike Air Max Dn8</h3><br>
+                <p>$190.99</p>
+                <div class="product-details">
+                    <p>Comfortable and stylish with air-cushion support.</p>
+                    <a href="product-details.html?name=Nike%20Air%20Max%20Dn8&price=190.99&image=product1.png&healheight=1.5%20inches&SKU=NIK-AMD8-001&categories=Running%20Shoes,Sneakers,Men's%20Footwear&description=Experience%20unparalleled%20comfort%20and%20movement%20with%20the%20Nike%20Air%20Max%20Dn8,%20featuring%20responsive%20cushioning%20and%20a%20sleek%20design.&reviews=Super%20comfortable%20and%20stylish!%20Worth%20the%20price.%20⭐⭐⭐⭐⭐|Perfect%20for%20running,%20great%20support!%20⭐⭐⭐⭐⭐|Love%20the%20design,%20but%20the%20size%20runs%20a%20bit%20small.%20⭐⭐⭐⭐|Very%20durable%20and%20lightweight,%20I%20wear%20them%20daily.%20⭐⭐⭐⭐⭐|Good%20quality,%20but%20took%20a%20while%20to%20break%20in.%20⭐⭐⭐⭐" class="cta-button">Buy Now</a>
+                  <br><br>  <a href="#" class="cta-button-cart">Add Cart</a>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="./product11.jpg" alt="Shoe 1" class="product-image">
+                <h3>Asics Gel-Kayano 27</h3><br>
+                <p> $160.00</p>
+                <div class="product-details">
+                    <p>Stability and cushioning for long-distance runners.</p>
+                    <a href="product-details.html?name=Asics%20Gel-Kayano%2027&price=160.00&image=product11.jpg&healheight=1.3%20inches&SKU=ASC-GK27-003&categories=Running%20Shoes,Sports&description=The%20Gel-Kayano%2027%20provides%20superior%20stability%20and%20cushioning%20for%20every%20stride.&reviews=Excellent%20support%20and%20comfort!%20⭐⭐⭐⭐⭐|Perfect%20for%20long-distance%20runs,%20love%20them!%20⭐⭐⭐⭐⭐|Great%20cushion%20but%20a%20bit%20heavy%20for%20my%20taste.%20⭐⭐⭐⭐" class="cta-button">Buy Now</a>
+                  <br> <br> <a href="#" class="cta-button-cart">Add Cart</a>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="./product4.avif" alt="Shoe 1" class="product-image">
+                <h3>Speedcat OG</h3><br>
+                <p>$271.12</p>
+                <div class="product-details">
+                    <p>Premium style for formal occasions.</p>
+                    <a href="product-details.html?name=Speedcat%20OG&price=271.12&image=product4.avif&healheight=1.8%20inches&SKU=SPD-OG-004&categories=Formal,Luxury,Office%20Wear&description=Designed%20for%20formal%20occasions%20and%20office%20wear,%20the%20Speedcat%20OG%20offers%20premium%20style%20and%20durability.&reviews=David%20S.%3A%20Very%20elegant%20and%20comfortable!%20⭐⭐⭐⭐⭐%7CJessica%20B.%3A%20Looks%20professional,%20but%20takes%20time%20to%20break%20in.%20⭐⭐⭐⭐%7CTom%20H.%3A%20Excellent%20quality,%20worth%20the%20price.%20⭐⭐⭐⭐⭐%7CRachel%20F.%3A%20Fits%20perfectly%20with%20my%20suits,%20love%20it.%20⭐⭐⭐⭐⭐%7CAndrew%20M.%3A%20Very%20classy%20and%20stylish,%20but%20needs%20polishing%20often.%20⭐⭐⭐⭐" class="cta-button">Buy Now</a>
+                   <br><br> <a href="#" class="cta-button-cart">Add Cart</a>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="./product2.png" alt="Shoe 1" class="product-image">
+                <h3>Nike C1TY</h3><br>
+                <p>$100.00</p>
+                <div class="product-details">
+                    <p>Breathable mesh for a lightweight, cushioned fit.</p>
+                    <a href="product-details.html?name=Nike%20C1TY&price=100.00&image=product2.png&healheight=1.2%20inches&SKU=NIK-C1TY-002&categories=Running%20Shoes,Casual%20Wear,Men's%20Footwear&description=A%20mesh%20upper%20keeps%20the%20fit%20breathable,%20making%20this%20an%20excellent%20choice%20for%20everyday%20wear%20and%20running.&reviews=Very%20comfortable%20and%20stylish.%20⭐⭐⭐⭐⭐|Breathability%20is%20great,%20but%20sizing%20runs%20a%20bit%20tight.%20⭐⭐⭐⭐|Perfect%20for%20casual%20wear,%20love%20it!%20⭐⭐⭐⭐⭐|Could%20use%20more%20cushioning,%20but%20overall%20great%20value.%20⭐⭐⭐⭐|Lightweight%20and%20flexible,%20good%20for%20jogging.%20⭐⭐⭐⭐⭐" class="cta-button">Buy Now</a>
+                   <br> <br><a href="#" class="cta-button-cart">Add Cart</a>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="./product13.jpg" alt="Shoe 1" class="product-image">
+                <h3>Saucony Triumph 18</h3><br>
+                <p>$150.00</p>
+                <div class="product-details">
+                    <p>Maximal cushioning for ultimate comfort during your runs.</p>
+                    <a href="product-details.html?name=Saucony%20Triumph%2018&price=150.00&image=product13.jpg&healheight=1.2%20inches&SKU=SAU-TRM18-005&categories=Running%20Shoes,Sports&description=The%20Triumph%2018%20provides%20a%20smooth,%20plush%20ride%20thanks%20to%20its%20ample%20cushioning.&reviews=These%20shoes%20are%20incredibly%20cushioned,%20perfect%20for%20long%20runs.%20⭐⭐⭐⭐⭐|Great%20for%20recovery%20runs,%20feels%20like%20walking%20on%20clouds!%20⭐⭐⭐⭐⭐|Too%20much%20cushioning%20for%20my%20liking,%20but%20great%20for%20others.%20⭐⭐⭐⭐" class="cta-button">Buy Now</a>
+                   <br><br> <a href="#" class="cta-button-cart">Add Cart</a>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="./product8.avif" alt="Shoe 2" class="product-image">
+                <h3>Running Shoes</h3><br>
+                <p>$129.99</p>
+                <div class="product-details">
+                    <p>Stylish and durable, built for high-speed performance.</p>
+                    <a href="product-details.html?name=Puma%20Speedcat&price=149.99&image=product8.avif&healheight=1.4%20inches&SKU=PUM-SPC-100&categories=Sports,Sneakers&description=Puma%20Speedcat%20offers%20high-speed%20comfort%20with%20precision%20grip%20and%20style.&reviews=Great%20for%20sports,%20love%20the%20grip!%20⭐⭐⭐⭐⭐|Comfortable%20and%20fits%20like%20a%20glove.%20⭐⭐⭐⭐⭐|Nice%20shoe,%20but%20I%20wish%20the%20sole%20was%20thicker.%20⭐⭐⭐⭐" class="cta-button">Buy Now</a>
+                   <br><br> <a href="#" class="cta-button-cart">Add Cart</a>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="./product3.avif" alt="Shoe 3" class="product-image">
+                <h3>Casual Loafers</h3><br>
+                <p>$89.99</p>
+                <div class="product-details">
+                    <p>Flexible and comfy for everyday wear.</p>
+                    <a href="product-details.html?name=Eezay%20Flip-Flops&price=50.59&image=product3.avif&healheight=0.5%20inches&SKU=PUMA-EEZAY-003&categories=Flip-Flops,Casual,Beach%20Wear&description=Lightweight%20and%20durable%20flip-flops%20designed%20for%20everyday%20comfort%20and%20casual%20outings.&reviews=Super%20comfy%20and%20perfect%20for%20the%20beach!%20⭐⭐⭐⭐⭐|Very%20lightweight,%20but%20could%20use%20more%20arch%20support.%20⭐⭐⭐⭐|Affordable%20and%20durable,%20love%20it!%20⭐⭐⭐⭐⭐|Simple%20design%20but%20high%20quality.%20⭐⭐⭐⭐|Great%20for%20summer,%20easy%20to%20slip%20on%20and%20off.%20⭐⭐⭐⭐⭐" class="cta-button">Buy Now</a>
+                   <br><br> <a href="#" class="cta-button-cart">Add Cart</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <br>
+    <br><br>
+    <h1 style="color: white; text-align: center; margin-left: 10px;">What's Hot </h1>
+    <div class="image-box">
+        <div class="image-item">
+          <img src="./homebig1.webp" alt="Image 1">
+          <div class="overlay">
+            <p>Men's Nike Air Zoom Pegasus 38</p>
+            <a  href="product-details.html?name=Nike%20Air%20Zoom%20Pegasus%2038&price=129.99&image=product7.webp&healheight=1.2%20inches&SKU=NIK-AZP-038&categories=Running%20Shoes,Sports&description=Featuring%20breathable%20mesh%20and%20Zoom%20Air%20cushioning%20for%20explosive%20energy%20return.&reviews=Best%20shoes%20for%20running,%20super%20light!%20⭐⭐⭐⭐⭐|Perfect%20fit%20and%20breathability.%20⭐⭐⭐⭐⭐|Comfortable%20but%20could%20have%20more%20arch%20support.%20⭐⭐⭐⭐" class="cta-button">Shop Now</a>
+          </div>
+        </div>
+        <div class="image-item">
+          <img src="homebig2.jpg" alt="Image 2">
+          <div class="overlay">
+            <p>Nike Air Max DN Winterized Shoes</p>
+            <a href="product-details.html?name=Nike%20Air%20Max%20Dn8&price=190.99&image=product1.png&healheight=1.5%20inches&SKU=NIK-AMD8-001&categories=Running%20Shoes,Sneakers,Men's%20Footwear&description=Experience%20unparalleled%20comfort%20and%20movement%20with%20the%20Nike%20Air%20Max%20Dn8,%20featuring%20responsive%20cushioning%20and%20a%20sleek%20design.&reviews=Super%20comfortable%20and%20stylish!%20Worth%20the%20price.%20⭐⭐⭐⭐⭐|Perfect%20for%20running,%20great%20support!%20⭐⭐⭐⭐⭐|Love%20the%20design,%20but%20the%20size%20runs%20a%20bit%20small.%20⭐⭐⭐⭐|Very%20durable%20and%20lightweight,%20I%20wear%20them%20daily.%20⭐⭐⭐⭐⭐|Good%20quality,%20but%20took%20a%20while%20to%20break%20in.%20⭐⭐⭐⭐" class="cta-button">Shop Now</a>
+
+          </div>
+        </div>
+        <div class="image-item">
+          <img src="homebig3.avif" alt="Image 3">
+          <div class="overlay">
+            <p>Easy-on sandals with lightweight cushioning.</p>
+            <a href="product-details.html?name=Eezay%20Flip-Flops&price=50.59&image=product3.avif&healheight=0.5%20inches&SKU=PUMA-EEZAY-003&categories=Flip-Flops,Casual,Beach%20Wear&description=Lightweight%20and%20durable%20flip-flops%20designed%20for%20everyday%20comfort%20and%20casual%20outings.&reviews=Super%20comfy%20and%20perfect%20for%20the%20beach!%20⭐⭐⭐⭐⭐|Very%20lightweight,%20but%20could%20use%20more%20arch%20support.%20⭐⭐⭐⭐|Affordable%20and%20durable,%20love%20it!%20⭐⭐⭐⭐⭐|Simple%20design%20but%20high%20quality.%20⭐⭐⭐⭐|Great%20for%20summer,%20easy%20to%20slip%20on%20and%20off.%20⭐⭐⭐⭐⭐" class="cta-button">Shop Now</a>
+
+
+          </div>
+        </div>
+        <div class="image-item">
+          <img src="./homebig4.webp" alt="Image 4">
+          <div class="overlay">
+            <p> Running shoes Asics GEL-KAYANO 29</p>
+            <a href="product-details.html?name=Asics%20Gel-Kayano%2027&price=160.00&image=product11.jpg&healheight=1.3%20inches&SKU=ASC-GK27-003&categories=Running%20Shoes,Sports&description=The%20Gel-Kayano%2027%20provides%20superior%20stability%20and%20cushioning%20for%20every%20stride.&reviews=Excellent%20support%20and%20comfort!%20⭐⭐⭐⭐⭐|Perfect%20for%20long-distance%20runs,%20love%20them!%20⭐⭐⭐⭐⭐|Great%20cushion%20but%20a%20bit%20heavy%20for%20my%20taste.%20⭐⭐⭐⭐" class="cta-button">Shop Now</a>
+
+          </div>
+        </div>
+      </div>
+      
+      <br><br>
+      <h1 style="color: white; text-align: center; margin-left: 10px;">New Arrivals</h1>
+      <div class="slider-container">
+        <div class="slider">
+          <div class="slider-item">
+            <img src="./product13.jpg" alt="Image 1">
+          </div>
+          <div class="slider-item">
+            <img src="./product1.png" alt="Image 2">
+          </div>
+          <div class="slider-item">
+            <img src="product14.webp" alt="Image 3">
+          </div>
+          <div class="slider-item">
+            <img src="./product5.webp" alt="Image 4">
+          </div>
+          <div class="slider-item">
+            <img src="./product8.avif" alt="Image 5">
+          </div>
+        </div>
+      </div>
+      
+      
+      <div class="membership-promo">
+        <div class="promo-message">
+          Become a Member & get 10% off
+        </div>
+        <a href="./Sign Up.html" class="sign-up-btn">Sign Up</a>
+      </div>
+      
+   <!-- Footer -->
+   <footer>
+    <div class="footer-content">
+        <div class="footer-section">
+            <h3>About FootWearX</h3>
+            <p>Discover high-quality footwear for all occasions. At FootWearX, we bring you the latest trends with comfort and durability.</p>
+        </div>
+        <div class="footer-section">
+            <h3>Customer Service</h3>
+            <ul>
+                <li><a href="./FAQs.html">FAQs</a></li>
+                <li><a href="./S&R.html">Shipping & Returns</a></li>
+                <li><a href="size-guide.html">Size Guide</a></li>
+                <li><a href="Contact Us.html">Contact Us</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h3>Follow Us</h3>
+            <a href="#">Facebook</a>
+            <a href="#">Instagram</a>
+            <a href="#">Twitter</a>
+        </div>
+        <div class="footer-section">
+            <h3>Contact Info</h3>
+            <p>Email: support@footwearx.com</p>
+            <p>Phone: +94 11 234 5678</p>
+            <p>Address: 123 Shoe Street, Colombo, Sri Lanka</p>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2025 FootWearX. All rights reserved.</p>
+    </div>
+</footer>
+
+    <!-- Feedback Sidebar -->
+    <div class="feedback-sidebar" id="feedbackSidebar">
+       <center> <input type="button" style="padding-left: 133px; background-color: rgb(10,46,88);" class="minimize-btn" onclick="toggleFeedbackSidebar()" value="&#9655;"><br>
+        <h2>Customer Feedback</h2>
+        <div id="feedbackList">
+            <!-- Feedback entries will appear here -->
+        </div>
+        <form id="feedbackForm" class="feedback-form" onsubmit="submitFeedback(event)">
+            <input type="text" id="username" placeholder="Your Name" required>
+            <textarea id="feedbackText" placeholder="Your Feedback" required></textarea>
+            <button type="submit">Submit Feedback</button>
+        </form>
+    </div>
+    
+    <script>
+
+    function changeText() {
+        document.getElementById("btnhide").innerHTML = "Give Feedback";
+        document.getElementById("btnhide").style.backgroundColor="rgba(255, 255, 255, 0.015);";
+    }
+
+    function resetText() {
+        document.getElementById("btnhide").innerHTML = "How was our service ?";
+        
+    }
+        // Toggle feedback sidebar
+        function toggleFeedbackSidebar() {
+            var sidebar = document.getElementById("feedbackSidebar");
+            sidebar.classList.toggle("show-sidebar");
+            document.getElementById('btnhide').style.display='block';
+            
+        }
+
+        function hide(){
+            document.getElementById('btnhide').style.display='none';
+        }
+
+        // Submit feedback
+        function submitFeedback(event) {
+            event.preventDefault();
+            var username = document.getElementById("username").value;
+            var feedbackText = document.getElementById("feedbackText").value;
+
+            var feedbackEntry = document.createElement("div");
+            feedbackEntry.classList.add("feedback-entry");
+            feedbackEntry.innerHTML = `<strong>${username}</strong>: ${feedbackText}`;
+
+            document.getElementById("feedbackList").appendChild(feedbackEntry);
+            document.getElementById("feedbackForm").reset();
+        }
+
+        // Show sidebar on page load
+        window.onload = function () {
+            document.getElementById("feedbackSidebar").classList.add("show-sidebar");
+        };
+    </script>
+
+<script>
+    const shoes = document.querySelectorAll('.shoe');
+
+    function randomizeFalling() {
+shoes.forEach(shoe => {
+    let randomLeft = Math.floor(Math.random() * window.innerWidth); // Random horizontal position
+    let randomDuration = Math.random() * (8 - 4) + 5; // Random falling speed between 5s and 10s (slower)
+
+    shoe.style.left = `${randomLeft}px`;
+    shoe.style.animationDuration = `${randomDuration}s`;
+});
+}
+    
+
+    // Randomize every 3 seconds
+    setInterval(randomizeFalling, 3000);
+</script>
+
+<script>
+    // Function to open the search overlay and hide the page content
+function openSearch() {
+    // Hide the main content of the page (optional: you can modify the code to fade out other content if needed)
+    document.body.style.overflow = "hidden"; // Prevent scrolling when search is open
+    document.getElementById("search-overlay").style.display = "flex"; // Show the search overlay
+}
+
+// Function to close the search overlay and show the page content again
+function closeSearch() {
+    document.body.style.overflow = "auto"; // Allow scrolling again
+    document.getElementById("search-overlay").style.display = "none"; // Hide the search overlay
+}
+
+</script>
+<script>
+let currentIndex = 0;
+const slides = document.querySelectorAll('.slider-item');
+const totalSlides = slides.length;
+const slideWidth = slides[0].offsetWidth; // Get the width of each slide including margin
+
+function changeSlide() {
+  currentIndex = (currentIndex + 1) % totalSlides; // Cycle through slides
+  document.querySelector('.slider').style.transform = `translateX(-${currentIndex * slideWidth}px)`; // Use slide width to move
+}
+
+// Set interval for sliding every 2 seconds
+setInterval(changeSlide, 3000); // 2000ms = 2 seconds
+
+</script>
+    
+</body>
+</html>

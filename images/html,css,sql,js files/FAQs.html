@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <title>FootWearX - FAQs</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
+    }
+
+    header {
+      background-color: #333;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 2.5em;
+    }
+
+    .faq-section {
+      padding: 20px;
+      margin: 20px auto;
+      width: 80%;
+      max-width: 1000px;
+    }
+
+    .faq-item {
+      background-color: white;
+      padding: 15px;
+      margin: 10px 0;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .question {
+      font-size: 1.5em;
+      color: #333;
+    }
+
+    .answer {
+      font-size: 1.2em;
+      color: #555;
+      margin-top: 10px;
+    }
+
+    footer {            
+            padding: 2em 0;
+            font-family: Arial, sans-serif;
+            background: #333;
+            color: white;
+            padding: 10px;
+            margin-top: 40px;
+            font-size: 14px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+            margin: 10px;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 10px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-section ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .footer-section p {
+            margin: 5px 0;
+        }
+
+        .footer-section a {
+            color: white;
+            text-decoration: none;
+            margin-right: 10px;
+        }
+
+        .footer-section a:hover {
+            text-decoration: underline;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .footer-bottom p {
+            margin: 0;
+        }
+           /* Sidebar Navigation */
+   .sidebar {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 100px;
+            height: 85vh;
+            background: rgba(255, 255, 255, 0); /* Transparent */
+            transition: background 0.3s ease-in-out;
+            padding-top: 50px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            margin-top: 20px;
+            margin-left: 20px;
+            margin-right: 10px;
+            margin-bottom: 20px;
+        }
+
+        .sidebar:hover {
+            background: rgba(255, 255, 255, 0.9); /* Changes color on hover */
+            a{
+                color: #00000098;
+            }
+        }
+        a:hover{
+            color: black;
+        }
+
+        .sidebar a {
+            text-decoration: none;
+            color: #33333325;
+            font-size: 18px;
+            padding: 15px;
+            max-width:  75px;
+            text-align: center;
+            display: block;
+            transition: color 0.3s ease;
+            z-index: -1;
+        }
+
+        .sidebar a:hover {
+            background: #3498db;
+            color: white;
+            width: 60px;
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar {
+    width: 8px; /* Scrollbar width */
+}
+
+::-webkit-scrollbar-track {
+    background: linear-gradient(135deg, rgb(10,46,88) 28%, rgb(89, 255, 255) );
+    
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg,  rgb(89, 255, 255),rgb(10,46,88) 49%  );
+    border-radius: 10px;
+    position: relative;
+    display: fixed;
+    justify-content: center;
+    align-items: center;
+}
+/* Search Icon */
+#search-icon {
+    cursor: pointer;
+}
+
+/* Fullscreen Search Overlay */
+.search-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Dark transparent background */
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #ffffff3b;
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 500px;
+}
+
+#search-bar {
+  
+    width: 100%;
+    padding: 10px;
+    font-size: 18px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+ 
+}
+
+button {
+    padding: 10px 20px;
+    background-color: rgb(10, 46, 88);
+    color: rgb(255, 255, 255);
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: rgb(89, 255, 255);
+    color: black;
+}
+
+/* Style for closing the search */
+button {
+    margin-top: 10px;
+}
+
+        
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Frequently Asked Questions</h1>
+  </header>
+
+   <!-- Sidebar Navigation -->
+   <div class="sidebar">
+    <a href="./Home.html"><i style="font-size: 40px;" class="fa fa-home" ></i></a><br>
+    <a href="./About Us.html"><i style="font-size: 40px;" class="fa fa-info-circle" ></i></a><br>
+    <a href="./Contact Us.html"><i style="font-size: 40px;" class="fa fa-envelope"></i></a><br>
+    <a href="./Login.html"><i style="font-size: 40px;" class="fa fa-user" ></i></a><br>
+    <a href="./Sign Up.html"><i style="font-size: 40px;" class="fa fa-user-plus" ></i></a>
+    <a href="#"><i style="font-size: 40px;" class="fa fa-shopping-cart"></i></a>
+    <!-- Magnifying Glass for Search -->
+    <a href="#" id="search-icon" onclick="openSearch()"><i style="font-size: 30px;" class="fa fa-search"></i></a>
+   
+  <!-- Fullscreen Search Bar (Hidden Initially) -->
+<div id="search-overlay" class="search-overlay">
+  <div class="search-container">
+      <input style="border-radius: 20px;" type="text" id="search-bar" placeholder="Search for products..." />
+      <button onclick="closeSearch()">Close</button>
+  </div>
+</div>
+
+  </div>
+  <section style="color: black;" class="faq-section">
+    <div class="faq-item">
+      <h3 class="question">What is FootWearX?</h3>
+      <p class="answer">FootWearX is an online shoe store that offers a wide range of footwear for men, women, and children.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3 class="question">How do I make a purchase?</h3>
+      <p class="answer">To make a purchase, simply browse through our catalog, add items to your cart, and proceed to checkout.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3 class="question">Can I return an item?</h3>
+      <p class="answer">Yes, we offer a 30-day return policy for most items. Please refer to our Return Policy for more details.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3 class="question">How can I contact customer support?</h3>
+      <p class="answer">You can contact customer support via email at support@footwearx.com or through our live chat feature on the website.</p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-content">
+        <div class="footer-section">
+            <h3>About FootWearX</h3>
+            <p>Discover high-quality footwear for all occasions. At FootWearX, we bring you the latest trends with comfort and durability.</p>
+        </div>
+        <div class="footer-section">
+            <h3>Customer Service</h3>
+            <ul>
+                <li><a href="./FAQs.html">FAQs</a></li>
+                <li><a href="./S&R.html">Shipping & Returns</a></li>
+                <li><a href="size-guide.html">Size Guide</a></li>
+                <li><a href="Contact Us.html">Contact Us</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h3>Follow Us</h3>
+            <a href="#">Facebook</a>
+            <a href="#">Instagram</a>
+            <a href="#">Twitter</a>
+        </div>
+        <div class="footer-section">
+            <h3>Contact Info</h3>
+            <p>Email: support@footwearx.com</p>
+            <p>Phone: +94 11 234 5678</p>
+            <p>Address: 123 Shoe Street, Colombo, Sri Lanka</p>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2025 FootWearX. All rights reserved.</p>
+    </div>
+</footer>
+
+<script>
+  // Function to open the search overlay and hide the page content
+function openSearch() {
+  // Hide the main content of the page (optional: you can modify the code to fade out other content if needed)
+  document.body.style.overflow = "hidden"; // Prevent scrolling when search is open
+  document.getElementById("search-overlay").style.display = "flex"; // Show the search overlay
+}
+
+// Function to close the search overlay and show the page content again
+function closeSearch() {
+  document.body.style.overflow = "auto"; // Allow scrolling again
+  document.getElementById("search-overlay").style.display = "none"; // Hide the search overlay
+}
+</script>
+</body>
+</html>

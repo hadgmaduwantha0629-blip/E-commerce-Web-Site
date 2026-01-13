@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>FootWearX - Sign Up</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #121212;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Blurred Background */
+        .background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('shoe2.jpeg') no-repeat center center/cover;
+            filter: blur(10px);
+            z-index: -1;
+        }
+
+        /* Sign Up Form Container */
+        .signup-container {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(12px);
+            border-radius: 15px;
+            padding: 40px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Form Elements */
+        .signup-container h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 2rem;
+            color: rgb(10,46,88) ;
+        }
+
+        .signup-container input {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.2);
+            color: #ffffff;
+            font-size: 1rem;
+            outline: none;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+
+        .signup-container input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .signup-container input:focus {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.02);
+        }
+
+        .signup-container button {
+            width: 100%;
+            padding: 12px;
+            margin: 20px 0 10px;
+            border: none;
+            border-radius: 8px;
+            background: #ff6f61;
+            color: #ffffff;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+
+        .signup-container button:hover {
+            background: linear-gradient(135deg, rgb(10,46,88) 18%, rgb(89, 255, 255));
+            
+            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+            transform: scale(1.05);
+        }
+
+        .signup-container p {
+            text-align: center;
+            margin-top: 10px;
+            font-size: 0.9rem;
+        }
+
+        .signup-container p a {
+            color: rgb(89, 255, 255);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .signup-container p a:hover {
+            color:  rgb(10,46,88) ;
+        }
+
+        /* Error Message */
+        .error {
+            color:  rgb(10,46,88) ;
+            font-size: 0.8rem;
+            text-align: center;
+            display: none;
+        }
+
+                /* Falling Shoe Animation */
+                .container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+
+        .shoe {
+            position: absolute;
+            top: -100px;
+            width: 50px;
+            height: 50px;
+            background-size: cover;
+            background-position: center;
+            animation: fall 2s linear infinite, bounce 1s ease-in-out infinite;
+        }
+
+        /* Falling Animation */
+        @keyframes fall {
+            0% {
+                top: -100px;
+            }
+            100% {
+                top: 100vh;
+            }
+        }
+
+        /* Bounce Animation */
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Shoe elements with different images -->
+        <div class="shoe" style="left: 10%; background-image: url('./anime1.png');"></div>
+        <div class="shoe" style="left: 30%; background-image: url('./anime2.png');"></div>
+        <div class="shoe" style="left: 50%; background-image: url('./anime3.png');"></div>
+        <div class="shoe" style="left: 70%; background-image: url('./anime4.png');"></div>
+        <div class="shoe" style="left: 90%; background-image: url('./anime5.png');"></div>
+        <div class="shoe" style="left: 10%; background-image: url('./anime1.png');"></div>
+        <div class="shoe" style="left: 30%; background-image: url('./anime2.png');"></div>
+        <div class="shoe" style="left: 30%; background-image: url('./anime2.png');"></div>
+        <div class="shoe" style="left: 11%; background-image: url('./anime2.png');"></div>
+        <div class="shoe" style="left: 35%; background-image: url('./anime3.png');"></div>
+        <div class="shoe" style="left: 45%; background-image: url('./anime3.png');"></div>
+        <div class="shoe" style="left: 65%; background-image: url('./anime4.png');"></div>
+    </div>
+
+    
+    <div class="background"></div>
+    <div class="signup-container">
+        <h1>Sign Up</h1>
+        <form id="signupForm" id="signupForm" action="registration_process.php" method="POST">
+            <input type="text" id="fullName" placeholder="Full Name" required>
+            <input type="email" id="email" placeholder="Email" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
+            <p class="error" id="errorMessage">Passwords do not match!</p>
+            <button type="submit">Sign Up</button>
+        </form>
+        <p>Already have an account? <a href="Login.html">Login</a></p>
+    </div>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+    const fullName = document.getElementById("fullName");
+    const email = document.getElementById("email");
+    const password = document.getElementById("password");
+    const confirmPassword = document.getElementById("confirmPassword");
+    const errorMessage = document.getElementById("errorMessage");
+    const signupButton = document.querySelector("button[type='submit']");
+    
+    // Retrieve stored users from localStorage
+    let users = JSON.parse(localStorage.getItem("users")) || [];
+
+    // Create password strength indicator
+    const passwordStrength = document.createElement("p");
+    passwordStrength.id = "passwordStrength";
+    passwordStrength.style.fontSize = "0.8rem";
+    passwordStrength.style.textAlign = "center";
+    passwordStrength.style.color = "rgb(10,46,88)";
+    password.insertAdjacentElement("afterend", passwordStrength);
+
+    // Create password requirements message
+    const passwordRequirements = document.createElement("ul");
+    passwordRequirements.id = "passwordRequirements";
+    passwordRequirements.style.fontSize = "0.8rem";
+    passwordRequirements.style.color = "red";
+    passwordRequirements.style.paddingLeft = "15px";
+    password.insertAdjacentElement("afterend", passwordRequirements);
+
+    // Full Name Validation (Max 20 characters)
+    fullName.addEventListener("input", function () {
+        if (fullName.value.length > 20) {
+            fullName.value = fullName.value.substring(0, 20);
+        }
+    });
+
+    // Email Validation
+    email.addEventListener("input", function () {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        email.style.border = emailRegex.test(email.value) ? "2px solid green" : "2px solid red";
+    });
+
+    // Password Strength Checker with Requirements
+    password.addEventListener("input", function () {
+        const strength = checkPasswordStrength(password.value);
+        passwordStrength.textContent = `Strength: ${strength.text}`;
+        passwordStrength.style.color = strength.color;
+
+        // Update password requirements dynamically
+        updatePasswordRequirements(password.value);
+
+        // Disable Sign Up button if password is not strong
+        validateForm();
+    });
+
+    function checkPasswordStrength(pass) {
+        let strength = { text: "Weak", color: "red" };
+        if (pass.length >= 8 && /[A-Z]/.test(pass) && /\d/.test(pass) && /[^a-zA-Z0-9]/.test(pass)) {
+            strength = { text: "Strong", color: "green" };
+        } else if (pass.length >= 6 && (/[A-Z]/.test(pass) || /\d/.test(pass))) {
+            strength = { text: "Medium", color: "orange" };
+        }
+        return strength;
+    }
+
+    function updatePasswordRequirements(pass) {
+        const requirements = [
+            { text: "At least 8 characters", regex: /.{8,}/ },
+            { text: "At least one uppercase letter (A-Z)", regex: /[A-Z]/ },
+            { text: "At least one number (0-9)", regex: /\d/ },
+            { text: "At least one special character (!@#$%^&*)", regex: /[^a-zA-Z0-9]/ }
+        ];
+
+        passwordRequirements.innerHTML = ""; // Clear previous requirements
+        requirements.forEach(req => {
+            let listItem = document.createElement("li");
+            listItem.textContent = req.text;
+            listItem.style.color = req.regex.test(pass) ? "green" : "red";
+            passwordRequirements.appendChild(listItem);
+        });
+    }
+
+    // Confirm Password Validation
+    confirmPassword.addEventListener("input", function () {
+        validateForm();
+    });
+
+    function validateForm() {
+        const strength = checkPasswordStrength(password.value);
+        const passwordsMatch = password.value === confirmPassword.value;
+        errorMessage.style.display = passwordsMatch ? "none" : "block";
+
+        // Enable or disable the sign-up button
+        signupButton.disabled = strength.text !== "Strong" || !passwordsMatch;
+        signupButton.style.opacity = signupButton.disabled ? "0.5" : "1";
+        signupButton.style.cursor = signupButton.disabled ? "not-allowed" : "pointer";
+    }
+
+    // Final Form Submission Validation & Storing User Data
+    document.getElementById("signupForm").addEventListener("submit", function (event) {
+        event.preventDefault(); // Prevent actual form submission
+
+        if (password.value !== confirmPassword.value || signupButton.disabled) {
+            errorMessage.style.display = "block";
+            return;
+        }
+
+        alert("Sign-up successful! You can now log in.");
+    });
+});
+</script>
+
+
+
+<script>
+    const shoes = document.querySelectorAll('.shoe');
+
+    function randomizeFalling() {
+shoes.forEach(shoe => {
+    let randomLeft = Math.floor(Math.random() * window.innerWidth); // Random horizontal position
+    let randomDuration = Math.random() * (10 - 5) + 5; // Random falling speed between 5s and 10s (slower)
+
+    shoe.style.left = `${randomLeft}px`;
+    shoe.style.animationDuration = `${randomDuration}s`;
+});
+}
+    
+
+    // Randomize every 2 seconds
+    setInterval(randomizeFalling, 3000);
+</script>
+    
+    
+    
+</body>
+</html>

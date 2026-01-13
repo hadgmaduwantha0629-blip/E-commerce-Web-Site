@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <title>Shipping & Returns - FootWearX</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
+    }
+
+    header {
+      background-color: #333;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 2.5em;
+    }
+
+    .content-section {
+      padding: 20px;
+      margin: 20px auto;
+      width: 80%;
+      max-width: 1000px;
+    }
+
+    .section-title {
+      font-size: 1.8em;
+      margin-bottom: 10px;
+      color: #333;
+    }
+
+    .section-content {
+      font-size: 1.2em;
+      line-height: 1.6;
+      color: #555;
+    }
+
+   
+    footer {            
+            padding: 2em 0;
+            font-family: Arial, sans-serif;
+            background: #333;
+            color: white;
+            padding: 10px;
+            margin-top: 40px;
+            font-size: 14px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+            margin: 10px;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 10px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-section ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .footer-section p {
+            margin: 5px 0;
+        }
+
+        .footer-section a {
+            color: white;
+            text-decoration: none;
+            margin-right: 10px;
+        }
+
+        .footer-section a:hover {
+            text-decoration: underline;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .footer-bottom p {
+            margin: 0;
+        }
+        
+/* Search Icon */
+#search-icon {
+    cursor: pointer;
+}
+
+/* Fullscreen Search Overlay */
+.search-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Dark transparent background */
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #ffffff3b;
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 500px;
+}
+
+#search-bar {
+  
+    width: 100%;
+    padding: 10px;
+    font-size: 18px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+ 
+}
+
+button {
+    padding: 10px 20px;
+    background-color: rgb(10, 46, 88);
+    color: rgb(255, 255, 255);
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: rgb(89, 255, 255);
+    color: black;
+}
+
+/* Style for closing the search */
+button {
+    margin-top: 10px;
+}
+
+   /* Sidebar Navigation */
+   .sidebar {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 100px;
+            height: 85vh;
+            background: rgba(255, 255, 255, 0); /* Transparent */
+            transition: background 0.3s ease-in-out;
+            padding-top: 50px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            margin-top: 20px;
+            margin-left: 20px;
+            margin-right: 10px;
+            margin-bottom: 20px;
+        }
+
+        .sidebar:hover {
+            background: rgba(255, 255, 255, 0.9); /* Changes color on hover */
+            a{
+                color: #00000098;
+            }
+        }
+        a:hover{
+            color: black;
+        }
+
+        .sidebar a {
+            text-decoration: none;
+            color: #33333325;
+            font-size: 18px;
+            padding: 15px;
+            max-width:  75px;
+            text-align: center;
+            display: block;
+            transition: color 0.3s ease;
+            z-index: -1;
+        }
+
+        .sidebar a:hover {
+            background: #3498db;
+            color: white;
+            width: 60px;
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar {
+    width: 8px; /* Scrollbar width */
+}
+
+::-webkit-scrollbar-track {
+    background: linear-gradient(135deg, rgb(10,46,88) 28%, rgb(89, 255, 255) );
+    
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg,  rgb(89, 255, 255),rgb(10,46,88) 49%  );
+    border-radius: 10px;
+    position: relative;
+    display: fixed;
+    justify-content: center;
+    align-items: center;
+}
+
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Shipping & Returns</h1>
+  </header>
+
+  
+     <!-- Sidebar Navigation -->
+     <div class="sidebar">
+      <a href="./Home.html"><i style="font-size: 40px;" class="fa fa-home" ></i></a><br>
+      <a href="./About Us.html"><i style="font-size: 40px;" class="fa fa-info-circle" ></i></a><br>
+      <a href="./Contact Us.html"><i style="font-size: 40px;" class="fa fa-envelope"></i></a><br>
+      <a href="./Login.html"><i style="font-size: 40px;" class="fa fa-user" ></i></a><br>
+      <a href="./Sign Up.html"><i style="font-size: 40px;" class="fa fa-user-plus" ></i></a>
+      <a href="#"><i style="font-size: 40px;" class="fa fa-shopping-cart"></i></a>
+      <!-- Magnifying Glass for Search -->
+      <a href="#" id="search-icon" onclick="openSearch()"><i style="font-size: 30px;" class="fa fa-search"></i></a>
+  
+     </div>
+
+<button id="btnhide" onmouseover="changeText()" onmouseout="resetText()" onclick="toggleFeedbackSidebar() ,hide()" class="cta-button1" style="display: none; border: none; float: right; margin-top: 38px; margin-right: 20px;">How was our service?</button>
+
+<!-- Fullscreen Search Bar (Hidden Initially) -->
+<div id="search-overlay" class="search-overlay">
+  <div class="search-container">
+      <input style="border-radius: 20px;" type="text" id="search-bar" placeholder="Search for products..." />
+      <button onclick="closeSearch()">Close</button>
+  </div>
+</div>
+
+  </div>
+
+  <section class="content-section">
+    <h2 class="section-title">Shipping Policy</h2>
+    <p class="section-content">
+      At FootWearX, we strive to provide fast and reliable shipping. Here’s what you need to know about our shipping policy:
+    </p>
+    <ul class="section-content">
+      <li>Orders are processed within 1-2 business days.</li>
+      <li>We offer free standard shipping on all orders within the country.</li>
+      <li>Expedited shipping options are available at an additional cost. Estimated delivery time: 2-3 business days.</li>
+      <li>International shipping is available. Shipping charges vary based on destination and size of the order.</li>
+      <li>You will receive a tracking number via email once your order has been shipped.</li>
+      <li>Shipping times may vary depending on the location, holidays, and weather conditions.</li>
+    </ul>
+  </section>
+
+  <section class="content-section">
+    <h2 class="section-title">Returns & Exchanges</h2>
+    <p class="section-content">
+      If you're not completely satisfied with your purchase, you can return or exchange it under our returns policy:
+    </p>
+    <ul class="section-content">
+      <li>Returns are accepted within 30 days of receiving your order.</li>
+      <li>Items must be in unused condition, with original tags, and in the original packaging.</li>
+      <li>Return shipping is free for all domestic orders. International returns are at the customer’s expense.</li>
+      <li>Once we receive the returned item, we will process your refund within 7 business days. Refunds are issued to the original payment method.</li>
+      <li>If you'd like to exchange an item, simply return the item and place a new order through our website.</li>
+      <li>Some items, such as personalized or clearance items, may be ineligible for return. Please check the product description for return eligibility.</li>
+    </ul>
+  </section>
+
+  <footer>
+    <div class="footer-content">
+        <div class="footer-section">
+            <h3>About FootWearX</h3>
+            <p>Discover high-quality footwear for all occasions. At FootWearX, we bring you the latest trends with comfort and durability.</p>
+        </div>
+        <div class="footer-section">
+            <h3>Customer Service</h3>
+            <ul>
+                <li><a href="./FAQs.html">FAQs</a></li>
+                <li><a href="./S&R.html">Shipping & Returns</a></li>
+                <li><a href="size-guide.html">Size Guide</a></li>
+                <li><a href="Contact Us.html">Contact Us</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h3>Follow Us</h3>
+            <a href="#">Facebook</a>
+            <a href="#">Instagram</a>
+            <a href="#">Twitter</a>
+        </div>
+        <div class="footer-section">
+            <h3>Contact Info</h3>
+            <p>Email: support@footwearx.com</p>
+            <p>Phone: +94 11 234 5678</p>
+            <p>Address: 123 Shoe Street, Colombo, Sri Lanka</p>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2025 FootWearX. All rights reserved.</p>
+    </div>
+</footer>
+<script>
+  // Function to open the search overlay and hide the page content
+function openSearch() {
+  // Hide the main content of the page (optional: you can modify the code to fade out other content if needed)
+  document.body.style.overflow = "hidden"; // Prevent scrolling when search is open
+  document.getElementById("search-overlay").style.display = "flex"; // Show the search overlay
+}
+
+// Function to close the search overlay and show the page content again
+function closeSearch() {
+  document.body.style.overflow = "auto"; // Allow scrolling again
+  document.getElementById("search-overlay").style.display = "none"; // Hide the search overlay
+}
+
+</script>
+</body>
+</html>
